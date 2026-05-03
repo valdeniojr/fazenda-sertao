@@ -116,7 +116,28 @@ while True:
 				animais.append([tipo, indentificacao, status])
 				print(f"Animal de identificação ({indentificacao}) cadastrado com sucesso.")
 		elif op == 2:
-			print(animais)
+			print("=" * 40)
+			print("          BUSCAR ANIMAL          ")
+			print("=" * 40)
+
+			while True:
+				indentificacao = input("Identificação (brinco ou número único): ")
+
+				for animal in animais:
+					if animal[1] == indentificacao:
+						print("========== RESULTADO DA BUSCA ==========")
+						print(f"Tipo: {animal[0]}")
+						print(f"Indentificação: {animal[1]}")
+						print(f"Status: {animal[2]}")
+						print("=" * 40)
+						break
+				else:
+					print("Animal não encontrado.")
+
+				nova_busca = input("Deseja realizar uma nova busca? (s/n): ")
+
+				if nova_busca != "s":
+					break
 	else:
 		print("=" * 40)
 		print("          MENU DO CLIENTE          ")
