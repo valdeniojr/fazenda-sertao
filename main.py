@@ -114,7 +114,7 @@ while True:
 					status = "Disponível p/ venda"
 
 				animais.append([tipo, indentificacao, status])
-				print(f"Animal de identificação {indentificacao} cadastrado com sucesso.")
+				print(f"Animal de identificação ({indentificacao}) cadastrado com sucesso.")
 		elif op == 2:
 			print(animais)
 	else:
