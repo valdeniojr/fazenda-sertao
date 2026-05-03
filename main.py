@@ -36,7 +36,7 @@ while True:
 		print("2 - Buscar Animal")
 		print("3 - Atualizar Animal")
 		print("4 - Remover Animal")
-		print("5 - Listar Animal")
+		print("5 - Listar Animais")
 
 		print("")
 
