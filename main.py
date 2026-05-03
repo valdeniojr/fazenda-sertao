@@ -3,6 +3,10 @@ usuarios = [
 	["janedoe", "12345", False] # Usuário teste
 ]
 
+animais = [
+	["Ovino", "2232", "Para engorda"]
+]
+
 logado = False
 admin = False
 
@@ -48,6 +52,71 @@ while True:
 
 		op = int(input("Escolha uma opção: "))
 
+		## Funcionalidades
+
+		if op == 1:
+			print("=" * 40)
+			print("          CADASTRAR ANIMAL          ")
+			print("=" * 40)
+
+			while True:
+				print("Tipo de Animal: ")
+				print("1 - Bovino de Leite")
+				print("2 - Caprino")
+				print("3 - Ovino")
+				print("4 - Suíno")
+				
+				tipo = int(input("Escolha (1-4): "))
+
+				if tipo in (1, 2, 3, 4):
+					break
+				else:
+					print("Opção inválida. Tente novamente.")
+
+			indentificacao = input("Identificação (brinco ou número único): ")
+
+			while True:
+				print("Status do Animal: ")
+				print("1 - Em lactação")
+				print("2 - Para engorda")
+				print("3 - Disponível p/ venda")
+
+				status = int(input("Escolha (1-3): "))
+
+				if status in (1, 2, 3):
+					break
+				else:
+					print("Opção inválida. Tente novamente.")
+
+			duplicado = False
+
+			for animal in animais:
+				if animal[1] == indentificacao:
+					print("Já possui um animal com essa identificação.")
+					duplicado = True
+					break
+
+			if not duplicado: 
+				if tipo == 1:
+					tipo = "Bovino de Leite"
+				elif tipo == 2:
+					tipo = "Caprino"
+				elif tipo == 3:
+					tipo = "Ovino"
+				elif tipo == 3:
+					tipo = "Suíno"
+
+				if status == 1:
+					status = "Em lactação"
+				elif status == 2:
+					status = "Para engorda"
+				elif status == 3:
+					status = "Disponível p/ venda"
+
+				animais.append([tipo, indentificacao, status])
+				print(f"Animal de identificação {indentificacao} cadastrado com sucesso.")
+		elif op == 2:
+			print(animais)
 	else:
 		print("=" * 40)
 		print("          MENU DO CLIENTE          ")
