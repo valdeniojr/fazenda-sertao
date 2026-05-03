@@ -127,7 +127,7 @@ while True:
 					if animal[1] == indentificacao:
 						print("========== RESULTADO DA BUSCA ==========")
 						print(f"Tipo: {animal[0]}")
-						print(f"Indentificação: {animal[1]}")
+						print(f"Identificação: {animal[1]}")
 						print(f"Status: {animal[2]}")
 						print("=" * 40)
 						break
@@ -236,7 +236,37 @@ while True:
 				if nova_alteracao != "s":
 					break
 		elif op == 4:
-			print(4)						
+			print("=" * 40)
+			print("          REMOVER ANIMAL          ")
+			print("=" * 40)
+
+			while True: 
+				indentificacao = input("Identificação (brinco ou número único): ")
+
+				for i in range(len(animais)):
+					animal = animais[i]
+
+					if animal[1] == indentificacao:
+							print("========== DETALHES DO ANIMAL ==========")
+							print(f"Tipo: {animal[0]}")
+							print(f"Identificação: {animal[1]}")
+							print(f"Status: {animal[2]}")
+							print("=" * 40)
+
+							confirmar_remocao = input("Tem certeza que deseja remover este animal? (s/n): ").lower()
+
+							if confirmar_remocao != "n":
+								animais.pop(i)	
+								print("Animal removido com sucesso.")
+							break
+				else:
+					print("Animal não encontrado.")
+				
+				nova_remocao = input("Deseja realizar uma nova remoção? (s/n): ").lower()
+	
+				if nova_remocao != "s":
+					break
+
 	else:
 		print("=" * 40)
 		print("          MENU DO CLIENTE          ")
