@@ -23,7 +23,9 @@ metricas = [
 ]
 
 produtos = [
-	["Queijo Coalho", 10.0, 100] # Item teste
+	["Queijo Coalho", 10.0, 100], # Item teste
+	["Queijo Manteiga", 10.0, 100], # Item teste
+	["Queijo", 10.0, 100], # Item teste
 ]
 
 logado = False
@@ -360,6 +362,43 @@ while True:
 
 			produtos.append([nome_produto, kg, 0])
 			print(f"O Produto {nome_produto} foi criado com sucesso.")
+		elif op == 8:
+			print("=" * 40)
+			print("          ADICIONAR ESTOQUE          ")
+			print("=" * 40)
+
+			print("")
+
+			while True:
+				while True:
+				
+					print("Escolha um produto: ")
+					for i in range(len(produtos)):
+						produto = produtos[i]
+
+						print(f"{i + 1} - {produto[0]}")
+
+					print("")
+
+					op = int(input("Escolha um produto: "))
+					
+					if op >= 0:
+						break
+
+				quantidade = int(input(f"Informe a quantidade que deseja adicionar ao estoque para o produto {produtos[op - 1][0]}: "))
+
+				while quantidade < 0:
+					print("Valor inválido. Tente novamente.")
+					quantidade = int(input(f"Informe a quantidade que deseja adicionar ao estoque para o produto {produtos[op- 1][0]}: "))
+
+				produtos[op - 1][2] += quantidade
+				print(f"O Estoque do produto {produtos[op - 1][0]} foram adicionados com sucesso.")
+				print(produtos)
+
+				nova_estoque = input("Deseja adicionar estoque em mais algum produto? (s/n): ").lower()
+
+				if nova_estoque != "s":
+					break
 	else:
 		print("=" * 40)
 		print("          MENU DO CLIENTE          ")
