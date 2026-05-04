@@ -22,6 +22,10 @@ metricas = [
 	["Dez", 0.0],
 ]
 
+produtos = [
+	["Queijo Coalho", 10.0, 100] # Item teste
+]
+
 logado = False
 admin = False
 
@@ -331,6 +335,31 @@ while True:
 					break
 
 			print(f"Produção diária de leite registrada com sucesso.")
+		elif op == 7:
+			print("=" * 40)
+			print("          CRIAR PRODUTO          ")
+			print("=" * 40)
+
+			nome_produto = input("Informe o nome do produto: ")
+
+			while nome_produto == "":
+				print("Nome inválido. Tente novamente")
+				nome_produto = input("Informe o nome do produto: ")
+
+			for produto in produtos:
+				if produto[0] == nome_produto:
+					print("Já existe um produto com esse nome. Tente novamente.")
+					nome_produto = input("Informe o nome do produto: ")
+					break
+
+			kg = float(input("Informe o peso do produto: "))
+
+			while kg <= 0:
+				print("Peso inválido. Tente novamente")
+				kg = float(input("Informe o peso do produto: "))
+
+			produtos.append([nome_produto, kg, 0])
+			print(f"O Produto {nome_produto} foi criado com sucesso.")
 	else:
 		print("=" * 40)
 		print("          MENU DO CLIENTE          ")
