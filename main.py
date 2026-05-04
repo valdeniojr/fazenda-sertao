@@ -399,6 +399,22 @@ while True:
 
 				if nova_estoque != "s":
 					break
+		elif op == 9:
+			print("=" * 40)
+			print("         ESTOQUE ATUAL          ")
+			print("=" * 40)
+
+			print("")
+
+			print("=" * 40)
+			print(f"{"PRODUTO":<15} {"KG":<10} {"QUANTIDADE":<13}")
+			print("=" * 40)
+
+			for produto in produtos:
+				print(f"{produto[0]:<15} {produto[1]:<10} {produto[2]:<13}")
+			print("=" * 40)
+			print(f"Total de Produtos: {len(produtos)}")
+				
 	else:
 		print("=" * 40)
 		print("          MENU DO CLIENTE          ")
