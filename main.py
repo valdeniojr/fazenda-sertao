@@ -41,18 +41,14 @@ while True:
 		print("")
 
 		print("6 - Registrar Produção de Leite")
-		print("7 - Adicionar Produto ao Estoque")
-		print("8 - Ver Estoque Atual")
-
-		print("")
-
-		print("9 - Extra")
+		print("7 - Criar Produto")
+		print("8 - Adicionar Produto ao Estoque")
+		print("9 - Ver Estoque Atual")
+		print("10 - Gráfico de Produção de Leite")
 
 		print("")
 
 		op = int(input("Escolha uma opção: "))
-
-		## Funcionalidades
 
 		if op == 1:
 			print("=" * 40)
