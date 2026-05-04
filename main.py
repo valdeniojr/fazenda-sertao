@@ -7,6 +7,21 @@ animais = [
 	["Ovino", "2232", "Para engorda"]
 ]
 
+metricas = [
+	["Jan", 0.0],
+	["Fev", 0.0],
+	["Mar", 0.0],
+	["Abr", 0.0],
+	["Maio", 0.0],
+	["Jun", 0.0],
+	["Jul", 0.0],
+	["Ago", 0.0],
+	["Set", 0.0],
+	["Out", 0.0],
+	["Nov", 0.0],
+	["Dez", 0.0],
+]
+
 logado = False
 admin = False
 
@@ -275,7 +290,47 @@ while True:
 	
 				print("=" * 40)
 				print(f"Total de Animais: {len(animais)}")
+		elif op == 6:
+			print("=" * 40)
+			print("          PRODUÇÃO DE LEITE          ")
+			print("=" * 40)
 
+			litro = float(input("Registre a produção diária: "))
+
+			while litro < 0:
+				print("Insira um valor válido.")
+
+				litro = float(input("Registre a produção diária: "))
+
+			while True:
+				print("Informe o mês atual:")
+				print("1 - Janeiro")
+				print("2 - Fevereiro")
+				print("3 - Março")
+				print("4 - Abril")
+				print("5 - Maio")
+				print("6 - Junho")
+				print("7 - Julho")
+				print("8 - Agosto")
+				print("9 - Setembro")
+				print("10 - Outubro")
+				print("11 - Novembro")
+				print("12 - Dezembro")
+
+				mes = int(input("Escolha (1-12): "))
+
+				if mes in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12):
+					break
+				else:
+					print("Opção inválida. Tente Novamente")
+
+			for i in range(len(metricas)):
+				metrica = metricas[i]
+				if i == (mes - 1):
+					metrica[1] += litro
+					break
+
+			print(f"Produção diária de leite registrada com sucesso.")
 	else:
 		print("=" * 40)
 		print("          MENU DO CLIENTE          ")
