@@ -441,9 +441,7 @@ while True:
 
 			for metrica in metricas:
 				valor = int(metrica[1] / 5)
-				print(f"{metrica[0]} │ {'▇' * valor:<{int(maior_mes / 5) + 1}} {metrica[1]}L")
-
-				
+				print(f"{metrica[0]} │ {'▇' * valor:<{int(maior_mes / 5) + 1}} {metrica[1]}L")		
 	else:
 		print("=" * 40)
 		print("          MENU DO CLIENTE          ")
@@ -461,3 +459,48 @@ while True:
 		print("")
 
 		op = int(input("Escolha uma opção: "))
+
+		if op == 1:
+			print("=" * 40)
+			print("         ESTOQUE DISPONÍVEL          ")
+			print("=" * 40)
+
+			print("")
+
+			while True:
+				print("Qual estoque deseja visualizar?")
+				print("1 - Estoque de Animais")
+				print("2 - Estoque de Produtos")
+
+				print("")
+
+				op = int(input("Escolha (1-2): "))
+
+				if op in (1, 2):
+					break
+
+			if op == 1:
+				if len(animais) == 0:
+					print("Não possui nenhum animal cadastrado.")
+				else:
+					print("=" * 40)
+					print(f"{"TIPO":<15} {"BRINCO":<10} {"STATUS":<13}")
+					print("=" * 40)
+
+					for animal in animais:
+						print(f"{animal[0]:<15} {animal[1]:<10} {animal[2]:<13}")
+
+					print("=" * 40)
+					print(f"Total de Animais: {len(animais)}")
+			else:
+				if len(produtos) == 0:
+					print("Não possui nenhum produto cadastrado.")
+				else:
+					print("=" * 40)
+					print(f"{"PRODUTO":<15} {"KG":<10} {"QUANTIDADE":<13}")
+					print("=" * 40)
+
+					for produto in produtos:
+						print(f"{produto[0]:<15} {produto[1]:<10} {produto[2]:<13}")
+					print("=" * 40)
+					print(f"Total de Produtos: {len(produtos)}")
