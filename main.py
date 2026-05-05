@@ -342,17 +342,24 @@ while True:
 			print("          CRIAR PRODUTO          ")
 			print("=" * 40)
 
+			print("")
+
 			nome_produto = input("Informe o nome do produto: ")
 
 			while nome_produto == "":
 				print("Nome inválido. Tente novamente")
 				nome_produto = input("Informe o nome do produto: ")
 
-			for produto in produtos:
-				if produto[0] == nome_produto:
-					print("Já existe um produto com esse nome. Tente novamente.")
-					nome_produto = input("Informe o nome do produto: ")
-					break
+			nome_duplicado = True
+
+			while nome_duplicado: 
+				nome_duplicado = False
+				for produto in produtos:
+					if produto[0] == nome_produto:
+						print("Já existe um produto com esse nome. Tente novamente.")
+						nome_produto = input("Informe o nome do produto: ")
+						nome_duplicado = True
+						break
 
 			kg = float(input("Informe o peso do produto: "))
 
