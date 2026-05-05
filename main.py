@@ -344,31 +344,37 @@ while True:
 
 			print("")
 
-			nome_produto = input("Informe o nome do produto: ")
-
-			while nome_produto == "":
-				print("Nome inválido. Tente novamente")
+			while True:
 				nome_produto = input("Informe o nome do produto: ")
 
-			nome_duplicado = True
+				while nome_produto == "":
+					print("Nome inválido. Tente novamente")
+					nome_produto = input("Informe o nome do produto: ")
 
-			while nome_duplicado: 
-				nome_duplicado = False
-				for produto in produtos:
-					if produto[0] == nome_produto:
-						print("Já existe um produto com esse nome. Tente novamente.")
-						nome_produto = input("Informe o nome do produto: ")
-						nome_duplicado = True
-						break
+				nome_duplicado = True
 
-			kg = float(input("Informe o peso do produto: "))
+				while nome_duplicado: 
+					nome_duplicado = False
+					for produto in produtos:
+						if produto[0] == nome_produto:
+							print("Já existe um produto com esse nome. Tente novamente.")
+							nome_produto = input("Informe o nome do produto: ")
+							nome_duplicado = True
+							break
 
-			while kg <= 0:
-				print("Peso inválido. Tente novamente")
 				kg = float(input("Informe o peso do produto: "))
 
-			produtos.append([nome_produto, kg, 0])
-			print(f"O Produto {nome_produto} foi criado com sucesso.")
+				while kg <= 0:
+					print("Peso inválido. Tente novamente")
+					kg = float(input("Informe o peso do produto: "))
+
+				produtos.append([nome_produto, kg, 0])
+				print(f"O Produto {nome_produto} foi criado com sucesso.")
+
+				novo_produto = input("Deseja criar um novo produto? (s/n): ").lower()
+
+				if novo_produto != "s":
+					break
 		elif op == 8:
 			print("=" * 40)
 			print("          ADICIONAR ESTOQUE          ")
