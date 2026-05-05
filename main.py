@@ -8,18 +8,18 @@ animais = [
 ]
 
 metricas = [
-	["Jan", 0.0],
-	["Fev", 0.0],
-	["Mar", 0.0],
-	["Abr", 0.0],
-	["Maio", 0.0],
-	["Jun", 0.0],
-	["Jul", 0.0],
-	["Ago", 0.0],
-	["Set", 0.0],
-	["Out", 0.0],
-	["Nov", 0.0],
-	["Dez", 0.0],
+	["Jan", 100],
+	["Fev", 200],
+	["Mar", 0],
+	["Abr", 0],
+	["Mai", 0],
+	["Jun", 0],
+	["Jul", 0],
+	["Ago", 0],
+	["Set", 0],
+	["Out", 0],
+	["Nov", 0],
+	["Dez", 0],
 ]
 
 produtos = [
@@ -301,12 +301,12 @@ while True:
 			print("          PRODUÇÃO DE LEITE          ")
 			print("=" * 40)
 
-			litro = float(input("Registre a produção diária: "))
+			litro = int(input("Registre a produção diária: "))
 
 			while litro < 0:
 				print("Insira um valor válido.")
 
-				litro = float(input("Registre a produção diária: "))
+				litro = int(input("Registre a produção diária: "))
 
 			while True:
 				print("Informe o mês atual:")
@@ -427,6 +427,22 @@ while True:
 				print(f"{produto[0]:<15} {produto[1]:<10} {produto[2]:<13}")
 			print("=" * 40)
 			print(f"Total de Produtos: {len(produtos)}")
+		elif op == 10:
+			print("=" * 40)
+			print("   PRODUÇÃO MENSAL DE LEITE   ")
+			print("=" * 40)
+			print("")
+
+			maior_mes = 0
+
+			for metrica in metricas:
+				if metrica[1] > maior_mes:
+					maior_mes = metrica[1]
+
+			for metrica in metricas:
+				valor = int(metrica[1] / 5)
+				print(f"{metrica[0]} │ {'▇' * valor:<{int(maior_mes / 5) + 1}} {metrica[1]}L")
+
 				
 	else:
 		print("=" * 40)
