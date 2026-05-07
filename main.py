@@ -507,3 +507,52 @@ while True:
 						print(f"{produto[0]:<15} {produto[1]:<10} {produto[2]:<13}")
 					print("=" * 40)
 					print(f"Total de Produtos: {len(produtos)}")
+		elif op == 2:
+			while True:
+				print("=" * 40)
+				print("            COMPRAR PRODUTO             ")
+				print("=" * 40)
+
+				print("")
+
+				while True:
+					print("Escolha um produto:")
+
+					for i in range(len(produtos)):
+						produto = produtos[i]
+						print(f"{i + 1} - {produto[0]}")
+					
+					print("")
+
+					op = int(input("Escolha: "))
+					quantidade = int(input("Informe a quantidade que deseja comprar: "))
+					
+					confirmar_escolha = "s"
+
+					while quantidade > produtos[op - 1][2]:
+						print("Não há estoque suficiente desse produto. Tente novamente.")
+
+						while True:
+							confirmar_escolha = input("Deseja realizar novamente a compra? (s/n): ").lower()
+
+							if confirmar_escolha in ("s", "n"):
+								break
+
+						if confirmar_escolha == "n":
+							break
+
+						quantidade = int(input(f"Informe a quantidade que deseja comprar do produto {produtos[op - 1][0]: }"))
+
+					if confirmar_escolha == "n":
+						break
+
+					produtos[op - 1][2] -= quantidade
+					print("Produto comprado com sucesso.")
+					break
+
+				nova_compra = input("Deseja realizar outra compra? (s/n): ").lower()
+
+				if nova_compra != "s":
+					break
+
+					
