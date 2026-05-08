@@ -4,7 +4,11 @@ usuarios = [
 ]
 
 animais = [
-	["Ovino", "2232", "Para engorda"]
+	["Ovino", "OVI-0001", "Para engorda"],
+	["Ovino", "OVI-0002", "Disponível p/ venda"],
+	["Ovino", "OVI-0003", "Disponível p/ venda"],
+	["Ovino", "OVI-0004", "Disponível p/ venda"],
+	["Ovino", "OVI-0005", "Disponível p/ venda"],
 ]
 
 metricas = [
@@ -554,5 +558,39 @@ while True:
 
 				if nova_compra != "s":
 					break
+		elif op == 3:
+			print("=" * 40)
+			print("            COMPRAR ANIMAL             ")
+			print("=" * 40)
 
-					
+			print("")
+
+			while True:
+				print("Escolha um animal: ")
+
+				disponivel_venda = False
+
+				for i in range(len(animais)):
+					animal = animais[i]
+
+					if animal[2] == "Disponível p/ venda":
+						disponivel_venda = True
+						print(f"{i + 1} - {animal[0]} ({animal[1]})")
+
+				if not disponivel_venda:
+					print("Não possui animais a venda.")
+					break
+
+				op = int(input("Escolha uma opção: "))
+				animal_selecionado = animais[op - 1]
+
+				if animal_selecionado[2] != "Disponível p/ venda":
+					print("Animal escolhido não está a venda. Tente novamente.")
+					continue
+				
+				print(f"Animal de identificação ({animal_selecionado[1]}) foi adquirido com sucesso.")
+				animais.pop(op - 1)
+
+				nova_compra = input("Deseja realizar outra compra? (s/n): ").lower()
+				if nova_compra != "s":
+					break
