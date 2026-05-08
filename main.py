@@ -32,6 +32,10 @@ produtos = [
 	["Queijo", 10.0, 100], # Item teste
 ]
 
+lista_compras = []
+
+agendamentos = []
+
 logado = False
 admin = False
 
@@ -552,6 +556,7 @@ while True:
 
 					produtos[op - 1][2] -= quantidade
 					print("Produto comprado com sucesso.")
+					lista_compras.append([produtos[op - 1][0]])
 					break
 
 				nova_compra = input("Deseja realizar outra compra? (s/n): ").lower()
@@ -590,7 +595,52 @@ while True:
 				
 				print(f"Animal de identificação ({animal_selecionado[1]}) foi adquirido com sucesso.")
 				animais.pop(op - 1)
+				lista_compras.append([animal_selecionado[1]])
 
 				nova_compra = input("Deseja realizar outra compra? (s/n): ").lower()
 				if nova_compra != "s":
+					break
+		elif op == 4:
+			print("=" * 40)
+			print("            AGENDAR RETIRADA             ")
+			print("=" * 40)
+
+			print("")
+
+			while True:
+				print("O que deseja agendar a retirada? ")
+
+				if len(lista_compras) == 0:
+					print("Você não possui nenhuma compra para agendar uma retirada.")
+					break
+
+				for i in range(len(lista_compras)):
+					compra = lista_compras[i]
+
+					print(f"{i + 1} - {compra[0]}")
+
+				print("")
+
+				op = int(input("Escolha: "))
+
+				compra_selecionada = lista_compras[op - 1]
+
+				data = input("Informe uma data para retirada (dd/mm/aaaa): ")
+				hora = input("Informe o horário para retirada (hh:mm): ")
+
+				while data == "":
+					print("Data inválida. Tente novamente.")
+					data = input("Informe uma data para retirada (dd/mm/aaaa): ")
+
+				while hora == "":
+					print("Horário inválido. Tente novamente.")
+					hora = input("Informe o horário para retirada (hh:mm): ")
+
+				print("Agendamento de retirada confirmado com sucesso.")
+				agendamentos.append([data, hora, compra_selecionada[0]])
+				lista_compras.pop(op - 1)
+
+				novo_agendamento = input("Deseja realizar outro agendamento? (s/n): ")
+
+				if novo_agendamento != "s":
 					break
