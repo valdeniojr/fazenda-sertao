@@ -632,17 +632,17 @@ while True:
 						print(f"{i + 1} - {animal[0]} ({animal[1]})")
 
 				if not disponivel_venda:
-					print("Não possui animais a venda.")
+					print("Nenhum animal disponível para venda.")
 					break
 
 				op = int(input("Escolha uma opção: "))
 				animal_selecionado = animais[op - 1]
 
 				if animal_selecionado[2] != "Disponível p/ venda":
-					print("Animal escolhido não está a venda. Tente novamente.")
+					print("Animal não disponível para venda. Tente novamente.")
 					continue
 				
-				print(f"Animal de identificação ({animal_selecionado[1]}) foi adquirido com sucesso.")
+				print(f"Animal '{animal_selecionado[1]}' adquirido com sucesso!")
 				animais.pop(op - 1)
 				lista_compras.append([animal_selecionado[1]])
 
