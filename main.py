@@ -89,7 +89,7 @@ while True:
 				else:
 					print("Opção inválida. Tente novamente.")
 
-			indentificacao = input("Identificação (brinco ou número único): ")
+			identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 			while True:
 				print("Status do Animal: ")
