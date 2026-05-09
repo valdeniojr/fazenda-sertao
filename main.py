@@ -485,6 +485,9 @@ while True:
 
 			usuarios.append([usuario, senha, admin])
 			print(f"Usuário '{usuario}' cadastrado com sucesso!")
+		elif op == 12:
+			print("Até logo! Obrigado por usar o sistema Fazenda Sertão.")
+			break
 	else:
 		print("=" * 40)
 		print("          MENU DO CLIENTE          ")
@@ -498,6 +501,7 @@ while True:
 		print("4 - Agendar Retirada")
 		print("5 - Registrar Interesse em Produto")
 		print("6 - Ver Meus Interesses")
+		print("7 - Sair")
 
 		print("")
 
