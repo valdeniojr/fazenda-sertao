@@ -680,5 +680,17 @@ while True:
 
 				lista_interesses.append([produto_selecionado])
 				print("Produto adicionado a sua lista de interesses com sucesso.")
+		elif op == 6:
+			if len(lista_interesses) == 0:
+					print("Você ainda não demonstrou interesse em nenhum produto.")
+			else:
+				print("=" * 40)
+				print(f"{"MEUS INTERESSES":<40}")
+				print("=" * 40)
+
+				for interesse in lista_interesses:
+					print(f"{interesse[0]:<40}")
+
+				print("=" * 40)
 
 			
