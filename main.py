@@ -109,7 +109,7 @@ while True:
 			duplicado = False
 
 			for animal in animais:
-				if animal[1] == indentificacao:
+				if animal[1] == identificacao:
 					print("Já possui um animal com essa identificação.")
 					duplicado = True
 					break
