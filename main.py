@@ -1,19 +1,13 @@
 usuarios = [
-	["johndoe", "12345", True], # Usuário teste
-	["janedoe", "12345", False] # Usuário teste
+	["johndoe", "12345", True],
+	["janedoe", "12345", False]
 ]
 
-animais = [
-	["Ovino", "OVI-0001", "Para engorda"],
-	["Ovino", "OVI-0002", "Disponível p/ venda"],
-	["Ovino", "OVI-0003", "Disponível p/ venda"],
-	["Ovino", "OVI-0004", "Disponível p/ venda"],
-	["Ovino", "OVI-0005", "Disponível p/ venda"],
-]
+animais = []
 
 metricas = [
-	["Jan", 100],
-	["Fev", 200],
+	["Jan", 0],
+	["Fev", 0],
 	["Mar", 0],
 	["Abr", 0],
 	["Mai", 0],
@@ -26,16 +20,9 @@ metricas = [
 	["Dez", 0],
 ]
 
-produtos = [
-	["Queijo Coalho", 10.0, 100], # Item teste
-	["Queijo Manteiga", 10.0, 100], # Item teste
-	["Queijo", 10.0, 100], # Item teste
-]
-
+produtos = []
 lista_compras = []
-
 agendamentos = []
-
 lista_interesses = []
 
 logado = False
