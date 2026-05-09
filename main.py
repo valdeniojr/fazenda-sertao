@@ -136,6 +136,8 @@ while True:
 			print("          BUSCAR ANIMAL          ")
 			print("=" * 40)
 
+			print("")
+
 			while True:
 				identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
