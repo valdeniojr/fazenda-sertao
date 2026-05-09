@@ -174,7 +174,7 @@ while True:
 						print("Opção inválida. Tente novamente.")
 
 				if op == 1:
-					indentificacao = input("Identificação (brinco ou número único): ")
+					identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 					for animal in animais:
 						if animal[1] == indentificacao:
@@ -202,24 +202,24 @@ while True:
 								tipo = "Suíno"
 
 							animal[0] = tipo
-							print(f"Animal ({animal[1]}) atualizado com sucesso!")
+							print(f"Animal '{animal[1]}' atualizado com sucesso!")
 							break
 					else:
-						print("Animal não encontrado.")
+						print("Nenhum animal com essa identificação foi encontrado.")
 				elif op == 2:
-					indentificacao = input("Identificação (brinco ou número único): ")
+					identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 					for animal in animais:
 						if animal[1] == indentificacao:
-							nova_identificacao = input("Nova identificação (brinco ou número único): ")
+							nova_identificacao = input("Informe a nova identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 							animal[1] = nova_identificacao
-							print(f"Animal ({animal[1]}) atualizado com sucesso!")
+							print(f"Animal '{animal[1]}' atualizado com sucesso!")
 							break
 					else:
-						print("Animal não encontrado.")
+						print("Nenhum animal com essa identificação foi encontrado.")
 				elif op == 3:
-					indentificacao = input("Identificação (brinco ou número único): ")
+					identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 					for animal in animais:
 						if animal[1] == indentificacao:
@@ -244,8 +244,10 @@ while True:
 								status = "Disponível p/ venda"
 
 							animal[2] = status
-							print(f"Animal ({animal[1]}) atualizado com sucesso!")
+							print(f"Animal '{animal[1]}' atualizado com sucesso!")
 							break
+					else:
+						print("Nenhum animal com essa identificação foi encontrado.")
 
 				nova_alteracao = input("Deseja realizar uma nova alteração? (s/n): ").lower()
 
