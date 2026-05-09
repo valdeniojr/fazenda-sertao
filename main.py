@@ -436,16 +436,19 @@ while True:
 			print("")
 
 			if len(produtos) == 0:
-					print("Não possui nenhum produto cadastrado.")
+					print("Nenhum produto cadastrado.")
 			else:
 				print("=" * 40)
-				print(f"{"PRODUTO":<15} {"KG":<10} {"QUANTIDADE":<13}")
-				print("=" * 40)
+				print("  ESTOQUE DE PRODUTOS")
+				print(f"{"PRODUTO":<13} {"KG":<10} {"QUANTIDADE":<13}")
+				print("-" * 40)
 	
 				for produto in produtos:
-					print(f"{produto[0]:<15} {produto[1]:<10} {produto[2]:<13}")
+					print(f"{produto[0]:<13} {produto[1]:<10} {produto[2]:<13}")
+				
 				print("=" * 40)
 				print(f"Total de Produtos: {len(produtos)}")
+				print("=" * 40)
 		elif op == 10:
 			print("=" * 40)
 			print("   PRODUÇÃO MENSAL DE LEITE   ")
