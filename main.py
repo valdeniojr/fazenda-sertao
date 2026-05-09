@@ -137,7 +137,7 @@ while True:
 			print("=" * 40)
 
 			while True:
-				indentificacao = input("Identificação (brinco ou número único): ")
+				identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 				for animal in animais:
 					if animal[1] == indentificacao:
@@ -148,7 +148,7 @@ while True:
 						print("=" * 40)
 						break
 				else:
-					print("Animal não encontrado.")
+					print("Nenhum animal com essa identificação foi encontrado.")
 
 				nova_busca = input("Deseja realizar uma nova busca? (s/n): ").lower()
 
