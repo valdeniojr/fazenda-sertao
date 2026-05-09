@@ -415,19 +415,18 @@ while True:
 					if op >= 0:
 						break
 
-				quantidade = int(input(f"Informe a quantidade que deseja adicionar ao estoque para o produto {produtos[op - 1][0]}: "))
+				quantidade = int(input(f"Quantidade a adicionar em estoque para '{produtos[op - 1][0]}': "))
 
 				while quantidade < 0:
 					print("Valor inválido. Tente novamente.")
-					quantidade = int(input(f"Informe a quantidade que deseja adicionar ao estoque para o produto {produtos[op- 1][0]}: "))
+					quantidade = int(input(f"Quantidade a adicionar em estoque para '{produtos[op - 1][0]}': "))
 
 				produtos[op - 1][2] += quantidade
-				print(f"O Estoque do produto {produtos[op - 1][0]} foram adicionados com sucesso.")
-				print(produtos)
+				print(f"Estoque de '{produtos[op - 1][0]}' atualizado com sucesso!")
 
-				nova_estoque = input("Deseja adicionar estoque em mais algum produto? (s/n): ").lower()
+				novo_estoque = input("Deseja atualizar o estoque de outro produto? (s/n): ").lower()
 
-				if nova_estoque != "s":
+				if novo_estoque != "s":
 					break
 		elif op == 9:
 			print("=" * 40)
