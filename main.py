@@ -75,6 +75,8 @@ while True:
 			print("          CADASTRAR ANIMAL          ")
 			print("=" * 40)
 
+			print("")
+
 			while True:
 				print("Tipo de Animal: ")
 				print("1 - Bovino de Leite")
