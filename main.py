@@ -451,8 +451,9 @@ while True:
 				print("=" * 40)
 		elif op == 10:
 			print("=" * 40)
-			print("   PRODUÇÃO MENSAL DE LEITE   ")
+			print("  PRODUÇÃO MENSAL DE LEITE")
 			print("=" * 40)
+
 			print("")
 
 			maior_mes = 0
