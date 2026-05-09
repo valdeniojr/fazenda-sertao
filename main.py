@@ -485,7 +485,6 @@ while True:
 
 			usuarios.append([usuario, senha, admin])
 			print(f"Usuário '{usuario}' cadastrado com sucesso!")
-			print(usuarios)
 	else:
 		print("=" * 40)
 		print("          MENU DO CLIENTE          ")
