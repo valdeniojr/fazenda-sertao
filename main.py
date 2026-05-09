@@ -732,5 +732,8 @@ while True:
 					print(f"{interesse[0]:<40}")
 
 				print("=" * 40)
+		elif op == 7:
+			print("Até logo! Obrigado por usar o sistema Fazenda Sertão.")
+			break
 
 			
