@@ -560,7 +560,7 @@ while True:
 
 					for produto in produtos:
 						print(f"{produto[0]:<15} {produto[1]:<10} {produto[2]:<13}")
-						
+
 					print("=" * 40)
 					print(f"Total de Produtos: {len(produtos)}")
 					print("=" * 40)
@@ -582,15 +582,15 @@ while True:
 					print("")
 
 					op = int(input("Escolha: "))
-					quantidade = int(input("Informe a quantidade que deseja comprar: "))
+					quantidade = int(input("Quantidade desejada: "))
 					
 					confirmar_escolha = "s"
 
 					while quantidade > produtos[op - 1][2]:
-						print("Não há estoque suficiente desse produto. Tente novamente.")
+						print("Estoque insuficiente para essa quantidade. Tente novamente.")
 
 						while True:
-							confirmar_escolha = input("Deseja realizar novamente a compra? (s/n): ").lower()
+							confirmar_escolha = input("Deseja tentar com outra quantidade? (s/n): ").lower()
 
 							if confirmar_escolha in ("s", "n"):
 								break
@@ -598,13 +598,13 @@ while True:
 						if confirmar_escolha == "n":
 							break
 
-						quantidade = int(input(f"Informe a quantidade que deseja comprar do produto {produtos[op - 1][0]: }"))
+						quantidade = int(input(f"Nova quantidade para '{produtos[op - 1][0]}': "))
 
 					if confirmar_escolha == "n":
 						break
 
 					produtos[op - 1][2] -= quantidade
-					print("Produto comprado com sucesso.")
+					print(f"{produtos[op - 1][0]}' x{quantidade} adicionado ao carrinho!")
 					lista_compras.append([produtos[op - 1][0]])
 					break
 
