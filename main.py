@@ -159,6 +159,8 @@ while True:
 			print("          ATUALIZAR ANIMAL          ")
 			print("=" * 40)
 
+			print("")
+
 			while True:
 				while True:
 					print("Qual informação deseja atualizar?")
