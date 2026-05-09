@@ -288,17 +288,19 @@ while True:
 					break
 		elif op == 5:
 			if len(animais) == 0:
-				print("Não possui nenhum animal cadastrado.")
+				print("Nenhum animal cadastrado.")
 			else:
 				print("=" * 40)
-				print(f"{"TIPO":<15} {"BRINCO":<10} {"STATUS":<13}")
-				print("=" * 40)
+				print(f"  LISTA DE ANIMAIS")
+				print(f"  {'TIPO':<13} {'BRINCO':<10} {'STATUS':<13}")
+				print("-" * 40)
 	
 				for animal in animais:
-					print(f"{animal[0]:<15} {animal[1]:<10} {animal[2]:<13}")
+					print(f"{animal[0]:<13} {animal[1]:<10} {animal[2]:<13}")
 	
 				print("=" * 40)
 				print(f"Total de Animais: {len(animais)}")
+				print("=" * 40)
 		elif op == 6:
 			print("=" * 40)
 			print("          PRODUÇÃO DE LEITE          ")
