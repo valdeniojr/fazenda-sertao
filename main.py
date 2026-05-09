@@ -76,6 +76,8 @@ while True:
 		print("8 - Adicionar Produto ao Estoque")
 		print("9 - Ver Estoque Atual")
 		print("10 - Gráfico de Produção de Leite")
+		print("11 - Cadastrar Usuário")
+		print("12 - Sair")
 
 		print("")
 
