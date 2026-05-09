@@ -131,7 +131,7 @@ while True:
 				elif status == 3:
 					status = "Disponível p/ venda"
 
-				animais.append([tipo, indentificacao, status])
+				animais.append([tipo, identificacao, status])
 				print(f"Animal '{identificacao}' cadastrado com sucesso!")
 		elif op == 2:
 			print("=" * 40)
