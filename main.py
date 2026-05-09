@@ -367,7 +367,9 @@ while True:
 					print("Peso inválido. Tente novamente")
 					kg = float(input("Informe o peso do produto: "))
 
-				produtos.append([nome_produto, kg, 0])
+				preco = float(input("Informe o preço do produto: "))
+
+				produtos.append([nome_produto, kg, 0, preco])
 				print(f"O Produto {nome_produto} foi criado com sucesso.")
 
 				novo_produto = input("Deseja criar um novo produto? (s/n): ").lower()
