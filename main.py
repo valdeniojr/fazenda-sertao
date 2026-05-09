@@ -36,6 +36,8 @@ lista_compras = []
 
 agendamentos = []
 
+lista_interesses = []
+
 logado = False
 admin = False
 
@@ -644,3 +646,39 @@ while True:
 
 				if novo_agendamento != "s":
 					break
+		elif op == 5:
+			print("=" * 40)
+			print("            REGISTRAR INTERESSES             ")
+			print("=" * 40)
+
+			print("")
+
+			print("Escolha um produto:")
+
+			print("")
+
+			for i in range(len(produtos)):
+				produto = produtos[i]
+
+				print(f"{i + 1} - {produto[0]}")
+
+			print("")
+
+			op = int(input("Escolha: "))
+
+			duplicado = False
+
+			for interesse in lista_interesses:
+				if produtos[op - 1][0] == interesse[0]:
+					duplicado = True
+					break
+			
+			if duplicado:
+				print("Você já adicionou esse produto na sua lista de interesse.")
+			else:
+				produto_selecionado = produtos[op - 1][0]
+
+				lista_interesses.append([produto_selecionado])
+				print("Produto adicionado a sua lista de interesses com sucesso.")
+
+			
