@@ -258,6 +258,8 @@ while True:
 			print("          REMOVER ANIMAL          ")
 			print("=" * 40)
 
+			print("")
+
 			while True: 
 				indentificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
