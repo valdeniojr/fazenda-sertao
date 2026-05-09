@@ -456,7 +456,36 @@ while True:
 
 			for metrica in metricas:
 				valor = int(metrica[1] / 5)
-				print(f"{metrica[0]} │ {'▇' * valor:<{int(maior_mes / 5) + 1}} {metrica[1]}L")		
+				print(f"{metrica[0]} │ {'▇' * valor:<{int(maior_mes / 5) + 1}} {metrica[1]}L")	
+		elif op == 11:
+			print("=" * 40)
+			print("   CADASTRAR USUÁRIO   ")
+			print("=" * 40)
+
+			print("")
+
+			usuario = input("Digite o nome de usuário: ")
+
+			while len(usuario) < 4:
+				print("Nome de usuário inválido. O usuário deve ter no mínimo 4 caracteres.")
+				usuario = input("Digite o nome de usuário: ")
+			
+			senha = input("Digite a senha: ")
+
+			while len(senha) < 4:
+				print("Senha inválida. A senha deve ter no mínimo 4 caracteres.")
+				senha = input("Digite a senha: ")
+			
+			admin = input("Esse usuário terá permissão de administrador? (s/n): ").lower()
+
+			if admin == "s":
+				admin = True
+			else:
+				admin = False
+
+			usuarios.append([usuario, senha, admin])
+			print(f"Usuário '{usuario}' cadastrado com sucesso!")
+			print(usuarios)
 	else:
 		print("=" * 40)
 		print("          MENU DO CLIENTE          ")
