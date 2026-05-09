@@ -727,7 +727,7 @@ while True:
 					produto_selecionado = produtos[op - 1][0]
 
 					lista_interesses.append([produto_selecionado])
-					print("Produto adicionado aos seus interesses com sucesso.")
+					print("Produto adicionado aos seus interesses com sucesso!")
 
 				novo_interesse = input("Deseja adicionar outro produto aos seus interesses? (s/n): ")
 
