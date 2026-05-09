@@ -660,7 +660,7 @@ while True:
 				print("O que deseja agendar a retirada? ")
 
 				if len(lista_compras) == 0:
-					print("Você não possui nenhuma compra para agendar uma retirada.")
+					print("Nenhuma compra encontrada para agendar retirada.")
 					break
 
 				for i in range(len(lista_compras)):
@@ -685,7 +685,7 @@ while True:
 					print("Horário inválido. Tente novamente.")
 					hora = input("Informe o horário para retirada (hh:mm): ")
 
-				print("Agendamento de retirada confirmado com sucesso.")
+				print("Retirada agendada com sucesso!")
 				agendamentos.append([data, hora, compra_selecionada[0]])
 				lista_compras.pop(op - 1)
 
