@@ -259,7 +259,7 @@ while True:
 			print("=" * 40)
 
 			while True: 
-				indentificacao = input("Identificação (brinco ou número único): ")
+				indentificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 				for i in range(len(animais)):
 					animal = animais[i]
@@ -270,15 +270,17 @@ while True:
 							print(f"Identificação: {animal[1]}")
 							print(f"Status: {animal[2]}")
 							print("=" * 40)
+							
+							print("")
 
 							confirmar_remocao = input("Tem certeza que deseja remover este animal? (s/n): ").lower()
 
 							if confirmar_remocao != "n":
 								animais.pop(i)	
-								print("Animal removido com sucesso.")
+								print("Animal removido com sucesso!")
 							break
 				else:
-					print("Animal não encontrado.")
+					print("Nenhum animal com essa identificação foi encontrado.")
 				
 				nova_remocao = input("Deseja realizar uma nova remoção? (s/n): ").lower()
 	
