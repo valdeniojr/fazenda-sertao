@@ -653,33 +653,39 @@ while True:
 
 			print("")
 
-			print("Escolha um produto:")
+			while True:
+				print("Escolha um produto:")
 
-			print("")
+				print("")
 
-			for i in range(len(produtos)):
-				produto = produtos[i]
+				for i in range(len(produtos)):
+					produto = produtos[i]
 
-				print(f"{i + 1} - {produto[0]}")
+					print(f"{i + 1} - {produto[0]}")
 
-			print("")
+				print("")
 
-			op = int(input("Escolha: "))
+				op = int(input("Escolha: "))
 
-			duplicado = False
+				duplicado = False
 
-			for interesse in lista_interesses:
-				if produtos[op - 1][0] == interesse[0]:
-					duplicado = True
+				for interesse in lista_interesses:
+					if produtos[op - 1][0] == interesse[0]:
+						duplicado = True
+						break
+					
+				if duplicado:
+					print("Você já adicionou esse produto aos seus interesses.")
+				else:
+					produto_selecionado = produtos[op - 1][0]
+
+					lista_interesses.append([produto_selecionado])
+					print("Produto adicionado aos seus interesses com sucesso.")
+
+				novo_interesse = input("Deseja adicionar outro produto aos seus interesses? (s/n): ")
+
+				if novo_interesse != "s":
 					break
-			
-			if duplicado:
-				print("Você já adicionou esse produto na sua lista de interesse.")
-			else:
-				produto_selecionado = produtos[op - 1][0]
-
-				lista_interesses.append([produto_selecionado])
-				print("Produto adicionado a sua lista de interesses com sucesso.")
 		elif op == 6:
 			if len(lista_interesses) == 0:
 					print("Você ainda não demonstrou interesse em nenhum produto.")
