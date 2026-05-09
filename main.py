@@ -738,8 +738,8 @@ while True:
 					print("Você ainda não demonstrou interesse em nenhum produto.")
 			else:
 				print("=" * 40)
-				print(f"{"MEUS INTERESSES":<40}")
-				print("=" * 40)
+				print(f"  {"MEUS INTERESSES":<40}")
+				print("-" * 40)
 
 				for interesse in lista_interesses:
 					print(f"{interesse[0]:<40}")
