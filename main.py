@@ -267,12 +267,12 @@ while True:
 			print("")
 
 			while True: 
-				indentificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
+				identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 				for i in range(len(animais)):
 					animal = animais[i]
 
-					if animal[1] == indentificacao:
+					if animal[1] == identificacao:
 							print("========== DETALHES DO ANIMAL ==========")
 							print(f"Tipo: {animal[0]}")
 							print(f"Identificação: {animal[1]}")
