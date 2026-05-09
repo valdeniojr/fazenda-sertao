@@ -183,7 +183,7 @@ while True:
 					identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 					for animal in animais:
-						if animal[1] == indentificacao:
+						if animal[1] == identificacao:
 							while True:
 								print("Tipo de Animal: ")
 								print("1 - Bovino de Leite")
@@ -216,7 +216,7 @@ while True:
 					identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 					for animal in animais:
-						if animal[1] == indentificacao:
+						if animal[1] == identificacao:
 							nova_identificacao = input("Informe a nova identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 							animal[1] = nova_identificacao
@@ -228,7 +228,7 @@ while True:
 					identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 					for animal in animais:
-						if animal[1] == indentificacao:
+						if animal[1] == identificacao:
 							while True:
 								print("Status do Animal: ")
 								print("1 - Em lactação")
