@@ -345,12 +345,8 @@ while True:
 				else:
 					print("Opção inválida. Tente novamente")
 
-			for i in range(len(metricas)):
-				metrica = metricas[i]
-				if i == (mes - 1):
-					metrica[1] += litros
-					break
-
+			metrica[mes - 1][1] += litros
+			
 			print(f"Produção de {litros}L registrada com sucesso!")
 		elif op == 7:
 			print("=" * 40)
