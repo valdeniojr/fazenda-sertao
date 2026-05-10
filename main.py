@@ -172,14 +172,14 @@ while True:
 					print("2 - Identificação")
 					print("3 - Status")
 
-					op = int(input("Escolha (1-3): "))
+					campo = int(input("Escolha (1-3): "))
 
-					if op in (1, 2, 3):
+					if campo in (1, 2, 3):
 						break
 					else:
 						print("Opção inválida. Tente novamente.")
 
-				if op == 1:
+				if campo == 1:
 					identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 					for animal in animais:
@@ -212,7 +212,7 @@ while True:
 							break
 					else:
 						print("Nenhum animal com essa identificação foi encontrado.")
-				elif op == 2:
+				elif campo == 2:
 					identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 					for animal in animais:
@@ -224,7 +224,7 @@ while True:
 							break
 					else:
 						print("Nenhum animal com essa identificação foi encontrado.")
-				elif op == 3:
+				elif campo == 3:
 					identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 					for animal in animais:
