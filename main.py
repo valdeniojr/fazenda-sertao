@@ -529,12 +529,12 @@ while True:
 
 				print("")
 
-				op = int(input("Escolha (1-2): "))
+				tipo_estoque = int(input("Escolha (1-2): "))
 
-				if op in (1, 2):
+				if tipo_estoque in (1, 2):
 					break
 
-			if op == 1:
+			if tipo_estoque == 1:
 				if len(animais) == 0:
 					print("Nenhum animal cadastrado.")
 				else:
