@@ -712,19 +712,19 @@ while True:
 
 				print("")
 
-				op = int(input("Escolha: "))
+				index = int(input("Escolha: "))
 
 				duplicado = False
 
 				for interesse in lista_interesses:
-					if produtos[op - 1][0] == interesse[0]:
+					if produtos[index - 1][0] == interesse[0]:
 						duplicado = True
 						break
 					
 				if duplicado:
 					print("Você já adicionou esse produto aos seus interesses.")
 				else:
-					produto_selecionado = produtos[op - 1][0]
+					produto_selecionado = produtos[index - 1][0]
 
 					lista_interesses.append([produto_selecionado])
 					print("Produto adicionado aos seus interesses com sucesso!")
