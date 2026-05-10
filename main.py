@@ -670,9 +670,9 @@ while True:
 
 				print("")
 
-				op = int(input("Escolha: "))
+				index = int(input("Escolha: "))
 
-				compra_selecionada = lista_compras[op - 1]
+				compra_selecionada = lista_compras[index - 1]
 
 				data = input("Informe uma data para retirada (dd/mm/aaaa): ")
 				hora = input("Informe o horário para retirada (hh:mm): ")
@@ -687,7 +687,7 @@ while True:
 
 				print("Retirada agendada com sucesso!")
 				agendamentos.append([data, hora, compra_selecionada[0]])
-				lista_compras.pop(op - 1)
+				lista_compras.pop(index - 1)
 
 				novo_agendamento = input("Deseja realizar outro agendamento? (s/n): ")
 
