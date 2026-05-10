@@ -484,14 +484,14 @@ while True:
 				print("Senha inválida. A senha deve ter no mínimo 4 caracteres.")
 				senha = input("Digite a senha: ")
 			
-			admin = input("Esse usuário terá permissão de administrador? (s/n): ").lower()
+			permissao = input("Esse usuário terá permissão de administrador? (s/n): ").lower()
 
-			if admin == "s":
-				admin = True
+			if permissao == "s":
+				permissao = True
 			else:
-				admin = False
+				permissao = False
 
-			usuarios.append([usuario, senha, admin])
+			usuarios.append([usuario, senha, permissao])
 			print(f"Usuário '{usuario}' cadastrado com sucesso!")
 		elif op == 12:
 			print("Até logo! Obrigado por usar o sistema Fazenda Sertão.")
