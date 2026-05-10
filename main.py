@@ -470,6 +470,19 @@ while True:
 
 			usuario = input("Digite o nome de usuário: ")
 
+			duplicado = True
+			
+			while duplicado:
+				duplicado = False
+
+				for user in usuarios:
+					if user[0] == usuario:
+						print("Já existe um usuário com esse nome. Tente novamente.")
+						usuario = input("Digite o nome de usuário: ")
+						duplicado = True
+						break
+
+
 			while len(usuario) < 4:
 				print("Nome de usuário inválido. O usuário deve ter no mínimo 4 caracteres.")
 				usuario = input("Digite o nome de usuário: ")
