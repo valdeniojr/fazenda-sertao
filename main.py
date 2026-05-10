@@ -440,7 +440,7 @@ while True:
 			else:
 				print("=" * 40)
 				print("  ESTOQUE DE PRODUTOS")
-				print(f"{"PRODUTO":<13} {"KG":<10} {"QUANTIDADE":<13}")
+				print(f"  {"PRODUTO":<13} {"KG":<10} {"QUANTIDADE":<13}")
 				print("-" * 40)
 	
 				for produto in produtos:
