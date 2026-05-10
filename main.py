@@ -581,12 +581,12 @@ while True:
 					
 					print("")
 
-					op = int(input("Escolha: "))
+					index = int(input("Escolha: "))
 					quantidade = int(input("Quantidade desejada: "))
 					
 					confirmar_escolha = "s"
 
-					while quantidade > produtos[op - 1][2]:
+					while quantidade > produtos[index - 1][2]:
 						print("Estoque insuficiente para essa quantidade. Tente novamente.")
 
 						while True:
@@ -598,14 +598,14 @@ while True:
 						if confirmar_escolha == "n":
 							break
 
-						quantidade = int(input(f"Nova quantidade para '{produtos[op - 1][0]}': "))
+						quantidade = int(input(f"Nova quantidade para '{produtos[index - 1][0]}': "))
 
 					if confirmar_escolha == "n":
 						break
 
-					produtos[op - 1][2] -= quantidade
-					print(f"{produtos[op - 1][0]}' x{quantidade} adicionado ao carrinho!")
-					lista_compras.append([produtos[op - 1][0]])
+					produtos[index - 1][2] -= quantidade
+					print(f"{produtos[index - 1][0]}' x{quantidade} adicionado ao carrinho!")
+					lista_compras.append([produtos[index - 1][0]])
 					break
 
 				nova_compra = input("Deseja realizar outra compra? (s/n): ").lower()
