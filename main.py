@@ -344,7 +344,7 @@ while True:
 				else:
 					print("Opção inválida. Tente novamente")
 
-			metrica[mes - 1][1] += litros
+			metricas[mes - 1][1] += litros
 			
 			print(f"Produção de {litros}L registrada com sucesso!")
 		elif op == 7:
