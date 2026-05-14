@@ -723,6 +723,10 @@ while True:
 			print("")
 
 			while True:
+				if len(produtos) == 0:
+					print("Nenhum produto cadastrado para registrar interesse.")
+					break
+
 				print("Escolha um produto:")
 
 				print("")
