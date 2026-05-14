@@ -407,8 +407,10 @@ while True:
 
 					index = int(input("Escolha um produto: "))
 					
-					if index >= 0:
+					if index > 0 and index < (len(produtos) + 1):
 						break
+					else:
+						print("Opção inválida. Tente novamente.")
 
 				quantidade = int(input(f"Quantidade a adicionar em estoque para '{produtos[index - 1][0]}': "))
 
