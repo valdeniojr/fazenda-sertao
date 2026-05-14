@@ -592,6 +592,12 @@ while True:
 					print("")
 
 					index = int(input("Escolha: "))
+
+					while index <= 0 or index > (len(produtos) + 1):
+						print("Opção inválida. Tente novamente.")
+
+						index = int(input("Escolha: "))
+
 					quantidade = int(input("Quantidade desejada: "))
 					
 					confirmar_escolha = "s"
