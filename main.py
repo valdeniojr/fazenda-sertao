@@ -676,7 +676,7 @@ while True:
 				if len(lista_compras) == 0:
 					print("Nenhuma compra encontrada para agendar retirada.")
 					break
-				
+
 				print("O que deseja agendar a retirada? ")
 
 
@@ -735,6 +735,11 @@ while True:
 				print("")
 
 				index = int(input("Escolha: "))
+
+				while index <= 0 or index > (len(produtos) + 1):
+					print("Opção inválida. Tente novamente.")
+
+					index = int(input("Escolha: "))
 
 				duplicado = False
 
