@@ -673,11 +673,12 @@ while True:
 			print("")
 
 			while True:
-				print("O que deseja agendar a retirada? ")
-
 				if len(lista_compras) == 0:
 					print("Nenhuma compra encontrada para agendar retirada.")
 					break
+				
+				print("O que deseja agendar a retirada? ")
+
 
 				for i in range(len(lista_compras)):
 					compra = lista_compras[i]
