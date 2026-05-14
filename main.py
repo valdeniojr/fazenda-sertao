@@ -192,7 +192,7 @@ while True:
 
 								tipo = int(input("Escolha (1-4): "))
 
-								if tipo in (1, 2, 3, 4):
+								if tipo in [1, 2, 3, 4]:
 									break
 								else:
 									print("Opção inválida. Tente novamente.")
@@ -236,7 +236,7 @@ while True:
 
 								status = int(input("Escolha (1-3): "))
 
-								if status in (1, 2, 3):
+								if status in [1, 2, 3]:
 									break
 								else:
 									print("Opção inválida. Tente novamente.")
