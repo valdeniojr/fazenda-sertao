@@ -688,6 +688,11 @@ while True:
 
 				index = int(input("Escolha: "))
 
+				while index <= 0 or index > (len(lista_compras) + 1):
+					print("Opção inválida. Tente novamente.")
+
+					index = int(input("Escolha: "))
+
 				compra_selecionada = lista_compras[index - 1]
 
 				data = input("Informe uma data para retirada (dd/mm/aaaa): ")
