@@ -54,9 +54,6 @@ while True:
 		print("3 - Atualizar Animal")
 		print("4 - Remover Animal")
 		print("5 - Listar Animais")
-
-		print("")
-
 		print("6 - Registrar Produção de Leite")
 		print("7 - Cadastrar Produto")
 		print("8 - Adicionar Produto ao Estoque")
