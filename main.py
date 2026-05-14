@@ -85,7 +85,7 @@ while True:
 				
 				tipo = int(input("Escolha (1-4): "))
 
-				if tipo in (1, 2, 3, 4):
+				if tipo in [1, 2, 3, 4]:
 					break
 				else:
 					print("Opção inválida. Tente novamente.")
@@ -100,7 +100,7 @@ while True:
 
 				status = int(input("Escolha (1-3): "))
 
-				if status in (1, 2, 3):
+				if status in [1, 2, 3]:
 					break
 				else:
 					print("Opção inválida. Tente novamente.")
@@ -173,7 +173,7 @@ while True:
 
 					campo = int(input("Escolha (1-3): "))
 
-					if campo in (1, 2, 3):
+					if campo in [1, 2, 3]:
 						break
 					else:
 						print("Opção inválida. Tente novamente.")
@@ -339,7 +339,7 @@ while True:
 
 				mes = int(input("Escolha (1-12): "))
 
-				if mes in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12):
+				if mes in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]:
 					break
 				else:
 					print("Opção inválida. Tente novamente")
@@ -539,7 +539,7 @@ while True:
 
 				tipo_estoque = int(input("Escolha (1-2): "))
 
-				if tipo_estoque in (1, 2):
+				if tipo_estoque in [1, 2]:
 					break
 
 			if tipo_estoque == 1:
