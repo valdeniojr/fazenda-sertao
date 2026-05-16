@@ -580,46 +580,113 @@ while True:
 				print("")
 
 				while True:
-					print("Escolha um produto:")
+					while True:
+						print("De onde deseja escolher o produto?")
+						print("1 - Ver todos os produtos")
+						print("2 - Escolher da minha lista de interesses")
 
-					for i in range(len(produtos)):
-						produto = produtos[i]
-						print(f"{i + 1} - {produto[0]}")
-					
-					print("")
+						origem = int(input("Escolha (1-2): "))
 
-					index = int(input("Escolha: "))
+						if origem in [1, 2]:
+							break
+						else:
+							print("Opção inválida. Tente novamente.")
 
-					while index <= 0 or index > (len(produtos) + 1):
-						print("Opção inválida. Tente novamente.")
+					if origem == 1:
+						if len(produtos) == 0:
+							print("Nenhum produto cadastrado.")
+							break
+
+						print("Escolha um produto:")
+
+						for i in range(len(produtos)):
+							produto = produtos[i]
+							print(f"{i + 1} - {produto[0]}")
+
+						print("")
 
 						index = int(input("Escolha: "))
 
-					quantidade = int(input("Quantidade desejada: "))
-					
-					confirmar_escolha = "s"
+						while index <= 0 or index > (len(produtos) + 1):
+							print("Opção inválida. Tente novamente.")
 
-					while quantidade > produtos[index - 1][2]:
-						print("Estoque insuficiente para essa quantidade. Tente novamente.")
+							index = int(input("Escolha: "))
 
-						while True:
-							confirmar_escolha = input("Deseja tentar com outra quantidade? (s/n): ").lower()
+						quantidade = int(input("Quantidade desejada: "))
 
-							if confirmar_escolha in ("s", "n"):
+						confirmar_escolha = "s"
+
+						while quantidade > produtos[index - 1][2]:
+							print("Estoque insuficiente para essa quantidade. Tente novamente.")
+
+							while True:
+								confirmar_escolha = input("Deseja tentar com outra quantidade? (s/n): ").lower()
+
+								if confirmar_escolha in ("s", "n"):
+									break
+
+							if confirmar_escolha == "n":
 								break
+
+							quantidade = int(input(f"Nova quantidade para '{produtos[index - 1][0]}': "))
 
 						if confirmar_escolha == "n":
 							break
 
-						quantidade = int(input(f"Nova quantidade para '{produtos[index - 1][0]}': "))
-
-					if confirmar_escolha == "n":
+						produtos[index - 1][2] -= quantidade
+						print(f"{produtos[index - 1][0]}' x{quantidade} adicionado ao carrinho!")
+						lista_compras.append([produtos[index - 1][0]])
 						break
+					else:
+						if len(lista_interesses) == 0:
+							print("Você ainda não demonstrou interesse em nenhum produto.")
+							break
+						
+						print("Escolha um produto:")
 
-					produtos[index - 1][2] -= quantidade
-					print(f"{produtos[index - 1][0]}' x{quantidade} adicionado ao carrinho!")
-					lista_compras.append([produtos[index - 1][0]])
-					break
+						for i in range(len(lista_interesses)):
+							produto = produtos[i]
+							print(f"{i + 1} - {produto[0]}")
+
+						print("")
+
+						index = int(input("Escolha: "))
+
+						while index <= 0 or index > (len(lista_interesses) + 1):
+							print("Opção inválida. Tente novamente.")
+
+							index = int(input("Escolha: "))
+
+						for i in range(len(produtos)):
+							if produtos[i][0] == lista_interesses[index - 1][0]:
+								index = i + 1
+								break
+							
+						quantidade = int(input("Quantidade desejada: "))
+
+						confirmar_escolha = "s"
+
+						while quantidade > produtos[index - 1][2]:
+							print("Estoque insuficiente para essa quantidade. Tente novamente.")
+
+							while True:
+								confirmar_escolha = input("Deseja tentar com outra quantidade? (s/n): ").lower()
+
+								if confirmar_escolha in ("s", "n"):
+									break
+
+							if confirmar_escolha == "n":
+								break
+
+							quantidade = int(input(f"Nova quantidade para '{lista_interesses[index - 1][0]}': "))
+
+						if confirmar_escolha == "n":
+							break
+
+						produtos[index - 1][2] -= quantidade
+						print(f"{lista_interesses[index - 1][0]}' x{quantidade} adicionado ao carrinho!")
+						lista_compras.append([produtos[index - 1][0]])
+						break
 
 				nova_compra = input("Deseja realizar outra compra? (s/n): ").lower()
 
