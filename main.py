@@ -614,24 +614,13 @@ while True:
 
 						quantidade = int(input("Quantidade desejada: "))
 
-						confirmar_escolha = "s"
-
 						while quantidade > produtos[index - 1][2]:
-							print("Estoque insuficiente para essa quantidade. Tente novamente.")
+							confirmar_escolha = input(f"O produto '{produtos[index - 1][0]}' não possui estoque suficiente, deseja tentar outra quantidade? (s/n): ").lower()
 
-							while True:
-								confirmar_escolha = input("Deseja tentar com outra quantidade? (s/n): ").lower()
-
-								if confirmar_escolha in ("s", "n"):
-									break
-
-							if confirmar_escolha == "n":
+							if confirmar_escolha != "s":
 								break
-
-							quantidade = int(input(f"Nova quantidade para '{produtos[index - 1][0]}': "))
-
-						if confirmar_escolha == "n":
-							break
+							else:
+								quantidade = int(input("Quantidade desejada: "))
 
 						produtos[index - 1][2] -= quantidade
 						print(f"{produtos[index - 1][0]}' x{quantidade} adicionado ao carrinho!")
