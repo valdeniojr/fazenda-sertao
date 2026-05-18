@@ -661,7 +661,7 @@ while True:
 							while True:
 								confirmar_escolha = input("Deseja tentar com outra quantidade? (s/n): ").lower()
 
-								if confirmar_escolha in ("s", "n"):
+								if confirmar_escolha in ["s", "n"]:
 									break
 
 							if confirmar_escolha == "n":
