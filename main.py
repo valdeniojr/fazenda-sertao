@@ -1,7 +1,6 @@
 usuarios = [
-	["johndoe", "12345", True],
-	["janedoe", "12345", False]
-]
+	{"usuario": "johndoe", "senha": "12345", "permissao": True},
+	{"usuario": "janedoe", "senha": "12345", "permissao": False}]
 
 animais = []
 
@@ -33,10 +32,10 @@ while not logado:
 	senha = input("Digite sua senha: ")
 
 	for user in usuarios:
-		if user[0] == usuario and user[1] == senha:
-			logado = True
+		if user["usuario"] == usuario and user["senha"] == senha:
+			admin = user["permissao"]
 			print("Login realizado com sucesso!")
-			admin = user[2]
+			logado = True
 			break
 	else:
 		print("As credenciais informadas não existem.")
