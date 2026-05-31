@@ -1,7 +1,7 @@
 from database.dados import animais, produtos, metricas, usuarios
 from constantes import prefixos, tipos, animal_status
 
-from utils import menu_opcoes, gerar_id, titulo, exibir_animais, exibir_produtos, clearCMD
+from utils.utils import menu_opcoes, gerar_id, titulo, exibir_animais, exibir_produtos, clearCMD
 
 
 def cadastrar_animal ():
