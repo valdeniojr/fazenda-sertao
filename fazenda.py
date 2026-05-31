@@ -176,3 +176,28 @@ def cadastrar_produto():
 
 		if novo_produto != "s":
 			break
+
+def adicionar_estoque():
+	titulo("ADICIONAR ESTOQUE")
+
+	while True:
+		lista_produtos = []
+
+		for produto in produtos:
+			lista_produtos.append(produto["nome"])
+
+		index = menu_opcoes("Lista de Produtos", lista_produtos, True)
+
+		quantidade = int(input(f"Quantidade a adicionar em estoque para '{produtos[index - 1]["nome"]}': "))
+
+		while quantidade < 0:
+			print("Valor inválido. Tente novamente.")
+			quantidade = int(input(f"Quantidade a adicionar em estoque para '{produtos[index - 1]["nome"]}': "))
+
+		produtos[index - 1]["estoque"] += quantidade
+		print(f"Estoque de '{produtos[index - 1]["nome"]}' atualizado com sucesso!")
+
+		novo_estoque = input("Deseja atualizar o estoque de outro produto? (s/n): ").lower()
+
+		if novo_estoque != "s":
+			break
