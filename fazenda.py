@@ -1,7 +1,7 @@
 from dados import animais
 from constantes import prefixos, tipos, animal_status
 
-from utils import menu_opcoes, gerar_id, titulo
+from utils import menu_opcoes, gerar_id, titulo, exibir_animal
 
 
 def cadastrar_animal ():
@@ -16,17 +16,12 @@ def cadastrar_animal ():
 
 def buscar_animal ():
 	titulo("BUSCAR ANIMAL")
-
 	while True:
 		identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
 
 		for animal in animais:
-			if animal[1] == identificacao:
-				print("========== RESULTADO DA BUSCA ==========")
-				print(f"Tipo: {animal[0]}")
-				print(f"Identificação: {animal[1]}")
-				print(f"Status: {animal[2]}")
-				print("=" * 40)
+			if animal["identificacao"] == identificacao:
+				exibir_animal(animal)
 				break
 		else:
 			print("Nenhum animal com essa identificação foi encontrado.")
