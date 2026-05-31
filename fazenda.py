@@ -1,4 +1,4 @@
-from dados import animais, produtos, metricas, usuarios
+from database.dados import animais, produtos, metricas, usuarios
 from constantes import prefixos, tipos, animal_status
 
 from utils import menu_opcoes, gerar_id, titulo, exibir_animais, exibir_produtos, clearCMD

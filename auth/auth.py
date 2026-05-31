@@ -1,4 +1,4 @@
-from dados import usuarios
+from database.dados import usuarios
 from utils import titulo, clearCMD
 
 def login():
