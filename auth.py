@@ -1,7 +1,8 @@
 from dados import usuarios
-from utils import titulo
+from utils import titulo, clearCMD
 
 def login():
+	clearCMD()
 	logado = False
 	while not logado:
 		titulo("FAZENDA SERTÃO")
@@ -15,5 +16,6 @@ def login():
 				print("Login realizado com sucesso!")
 				break
 		else:
+			clearCMD()
 			print("As credenciais informadas não existem.")
 	return admin
