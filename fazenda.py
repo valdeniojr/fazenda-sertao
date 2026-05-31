@@ -117,7 +117,7 @@ def remover_animal():
 			animal = animais[i]
 
 			if animal["identificacao"] == identificacao:
-					exibir_animais(animal)
+					exibir_animais([animal])
 
 					confirmar_remocao = input("Tem certeza que deseja remover este animal? (s/n): ").lower()
 
