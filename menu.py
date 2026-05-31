@@ -4,7 +4,7 @@ from rich.text import Text
 from rich import box
 
 from utils import titulo
-from fazenda import cadastrar_animal, buscar_animal, atualizar_animal, remover_animal, listar_animais, producao_leite, cadastrar_produto, adicionar_estoque, listar_produtos, grafico_producao
+from fazenda import cadastrar_animal, buscar_animal, atualizar_animal, remover_animal, listar_animais, producao_leite, cadastrar_produto, adicionar_estoque, listar_produtos, grafico_producao, cadastrar_usuario
 
 console = Console()
 
@@ -100,6 +100,8 @@ def menu(permissao):
 				adicionar_estoque()
 			elif op == 10:
 				listar_produtos()
+			elif op == 11:
+				cadastrar_usuario()
 			else:
 				break
 		else:
