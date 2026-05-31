@@ -210,3 +210,16 @@ def listar_produtos():
 		exibir_produtos(produtos)
 
 		print(f"Total de Produtos: {len(produtos)}")
+
+def grafico_producao():
+	titulo("PRODUÇÃO MENSAL DE LEITE")
+
+	maior_mes = 0
+
+	for metrica in metricas:
+		if metrica["producao"] > maior_mes:
+			maior_mes = metrica["producao"]
+
+	for metrica in metricas:
+		valor = int(metrica["producao"] / 5)
+		print(f"{metrica["mes"]} ┤ {'█' * valor:<{int(maior_mes / 5) + 1}} {metrica["producao"]}L")	
