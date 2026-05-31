@@ -1,5 +1,5 @@
 from database.dados import animais, produtos, metricas, usuarios
-from constantes import prefixos, tipos, animal_status
+from config.constantes import prefixos, tipos, animal_status
 
 from utils.utils import menu_opcoes, gerar_id, titulo, exibir_animais, exibir_produtos, clearCMD
 
