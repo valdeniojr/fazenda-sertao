@@ -1,4 +1,4 @@
-from dados import animais
+from dados import animais, metricas
 from constantes import prefixos, tipos, animal_status
 
 from utils import menu_opcoes, gerar_id, titulo, exibir_animais
@@ -123,3 +123,19 @@ def listar_animais():
 		exibir_animais(animais)
 
 		print(f"Total de Animais: {len(animais)}")
+
+def producao_leite():
+	titulo("PRODUÇÃO DE LEITE")
+
+	litros = float(input("Informe a produção diária em litros: "))
+
+	while litros < 0:
+		print("Valor inválido. Tente novamente")
+
+		litros = float(input("Informe a produção diária em litros: "))
+
+	meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+	mes = menu_opcoes("Produção Diária", meses, True)
+
+	metricas[mes - 1]["producao"] += litros
+	print(f"Produção de {litros}L registrada com sucesso!")
