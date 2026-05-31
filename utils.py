@@ -19,6 +19,19 @@ def exibir_animais(animais):
 
     console.print(tabela)
 
+def exibir_produtos(produtos):
+    tabela = Table(box=box.ROUNDED, border_style="dim", width=64)
+
+    tabela.add_column("Nome", style="dim")
+    tabela.add_column("Peso", style="dim")
+    tabela.add_column("Estoque", style="dim")
+    tabela.add_column("Preço", style="dim")
+
+    for produto in produtos:
+        tabela.add_row(produto["nome"], f"KG {produto['peso']}", f"x{produto["estoque"]}", f"R$ {produto['preco']}")
+
+    console.print(tabela)
+
 def titulo(texto):
     console.print("─" * 42, style="dim", justify="center", width=42)
     console.print(f"  [bold white]{texto}[/]", justify="center", width=42)
