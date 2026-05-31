@@ -7,14 +7,15 @@ from rich import box
 console = Console()
 
 
-def exibir_animal(animal):
+def exibir_animais(animais):
     tabela = Table(box=box.ROUNDED, border_style="dim", width=64)
 
     tabela.add_column("Tipo", style="dim")
     tabela.add_column("Identificação", style="dim")
     tabela.add_column("Status", style="dim")
 
-    tabela.add_row(animal["tipo"], animal["identificacao"], animal["status"])
+    for animal in animais:
+        tabela.add_row(animal["tipo"], animal["identificacao"], animal["status"])
 
     console.print(tabela)
 
