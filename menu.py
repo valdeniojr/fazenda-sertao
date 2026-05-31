@@ -62,6 +62,7 @@ menu_cliente.append("Sair\n", style="white")
 
 
 def menu(permissao):
+	clearCMD()
 	while True:
 		if permissao:
 			titulo("FAZENDA SERTÃO")
