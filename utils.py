@@ -5,6 +5,11 @@ from rich import box
 
 console = Console()
 
+def titulo(texto):
+    console.print("─" * 42, style="dim", justify="center", width=42)
+    console.print(f"  [bold white]{texto}[/]", justify="center", width=42)
+    console.print("─" * 42, style="dim", justify="center", width=42)
+
 def menu_opcoes(titulo, lista):
 	while True:
 		texto_menu = Text()
