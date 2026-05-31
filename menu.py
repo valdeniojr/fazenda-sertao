@@ -3,7 +3,7 @@ from rich.panel import Panel
 from rich.text import Text
 from rich import box
 
-from utils import titulo
+from utils import titulo, clearCMD
 from fazenda import cadastrar_animal, buscar_animal, atualizar_animal, remover_animal, listar_animais, producao_leite, cadastrar_produto, adicionar_estoque, listar_produtos, grafico_producao, cadastrar_usuario
 
 console = Console()
@@ -102,8 +102,14 @@ def menu(permissao):
 				listar_produtos()
 			elif op == 11:
 				cadastrar_usuario()
-			else:
+			elif op == 12:
+				clearCMD()
+				print("Até logo! Obrigado por usar o sistema Fazenda Sertão.")
 				break
+			else:
+				clearCMD()
+				print("Opção inválida. Tente novamente.")
+				continue
 		else:
 			titulo("FAZENDA SERTÃO")
 			console.print(
