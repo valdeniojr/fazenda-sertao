@@ -1,8 +1,30 @@
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
+from rich import box
+
+console = Console()
+
 def menu_opcoes(titulo, lista):
 	while True:
-		print(titulo)
+		texto_menu = Text()
 		for i in range(len(lista)):
-			print(f"{i + 1} - {lista[i]}")
+			texto_menu.append(f"  {i + 1} - ", style="dim")
+			if i == (len(lista) - 1):
+				texto_menu.append(f"{lista[i]}", style="white")
+			else:
+				texto_menu.append(f"{lista[i]}\n", style="white")
+
+		console.print(
+            Panel(
+                texto_menu,
+                title=f"[bold white] {titulo}\n [/]",
+                border_style="dim",
+                box=box.ROUNDED,
+                width=42,
+                padding=(0, 1),
+            )
+        )
 		
 		index = int(input(f"Escolha (1-{len(lista)}): "))
 
