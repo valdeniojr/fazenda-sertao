@@ -1,7 +1,7 @@
 from dados import animais
 from constantes import prefixos, tipos, animal_status
 
-from utils import menu_opcoes, gerar_id, titulo, exibir_animal
+from utils import menu_opcoes, gerar_id, titulo, exibir_animais
 
 
 def cadastrar_animal ():
@@ -21,7 +21,7 @@ def buscar_animal ():
 
 		for animal in animais:
 			if animal["identificacao"] == identificacao:
-				exibir_animal(animal)
+				exibir_animais(animal)
 				break
 		else:
 			print("Nenhum animal com essa identificação foi encontrado.")
@@ -99,7 +99,7 @@ def remover_animal():
 			animal = animais[i]
 
 			if animal["identificacao"] == identificacao:
-					exibir_animal(animal)
+					exibir_animais(animal)
 
 					confirmar_remocao = input("Tem certeza que deseja remover este animal? (s/n): ").lower()
 
@@ -114,3 +114,12 @@ def remover_animal():
 
 		if nova_remocao != "s":
 			break
+
+def listar_animais():
+	if len(animais) == 0:
+		print("Nenhum animal cadastrado.")
+	else:
+		titulo("LISTA DE ANIMAIS")
+		exibir_animais(animais)
+
+		print(f"Total de Animais: {len(animais)}")
