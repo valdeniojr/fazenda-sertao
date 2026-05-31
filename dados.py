@@ -6,18 +6,18 @@ usuarios = [
 animais = []
 
 metricas = [
-	["Jan", 0.0],
-	["Fev", 0.0],
-	["Mar", 0.0],
-	["Abr", 0.0],
-	["Mai", 0.0],
-	["Jun", 0.0],
-	["Jul", 0.0],
-	["Ago", 0.0],
-	["Set", 0.0],
-	["Out", 0.0],
-	["Nov", 0.0],
-	["Dez", 0.0],
+	{"mes": "Jan", "producao": 0.0},
+	{"mes": "Fev", "producao": 0.0},
+	{"mes": "Mar", "producao": 0.0},
+	{"mes": "Abr", "producao": 0.0},
+	{"mes": "Mai", "producao": 0.0},
+	{"mes": "Jun", "producao": 0.0},
+	{"mes": "Jul", "producao": 0.0},
+	{"mes": "Ago", "producao": 0.0},
+	{"mes": "Set", "producao": 0.0},
+	{"mes": "Out", "producao": 0.0},
+	{"mes": "Nov", "producao": 0.0},
+	{"mes": "Dez", "producao": 0.0}
 ]
 
 produtos = []
