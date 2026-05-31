@@ -88,3 +88,29 @@ def atualizar_animal():
 
 		if nova_alteracao != "s":
 			break
+
+def remover_animal():
+	titulo("REMOVER ANIMAL")
+
+	while True: 
+		identificacao = input("Informe a identificação do animal (brinco ou nº único) [ex: BOV-0001]: ")
+
+		for i in range(len(animais)):
+			animal = animais[i]
+
+			if animal["identificacao"] == identificacao:
+					exibir_animal(animal)
+
+					confirmar_remocao = input("Tem certeza que deseja remover este animal? (s/n): ").lower()
+
+					if confirmar_remocao != "n":
+						animais.pop(i)	
+						print("Animal removido com sucesso!")
+					break
+		else:
+			print("Nenhum animal com essa identificação foi encontrado.")
+		
+		nova_remocao = input("Deseja realizar uma nova remoção? (s/n): ").lower()
+
+		if nova_remocao != "s":
+			break
