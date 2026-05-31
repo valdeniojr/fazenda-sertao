@@ -1,4 +1,4 @@
-from dados import animais, metricas
+from dados import animais, produtos, metricas
 from constantes import prefixos, tipos, animal_status
 
 from utils import menu_opcoes, gerar_id, titulo, exibir_animais
@@ -139,3 +139,40 @@ def producao_leite():
 
 	metricas[mes - 1]["producao"] += litros
 	print(f"Produção de {litros}L registrada com sucesso!")
+
+def cadastrar_produto():
+	titulo("CADASTRAR PRODUTO")
+
+	while True:
+		nome_produto = input("Nome do produto: ")
+
+		while nome_produto == "":
+			print("Nome inválido. Tente novamente")
+			nome_produto = input("Nome do produto: ")
+
+		nome_duplicado = True
+
+		while nome_duplicado: 
+			nome_duplicado = False
+			for produto in produtos:
+				if produto["nome"] == nome_produto:
+					print("Já existe um produto com esse nome. Tente novamente.")
+					nome_produto = input("Nome do produto: ")
+					nome_duplicado = True
+					break
+
+		kg = float(input("Peso do produto: "))
+
+		while kg <= 0:
+			print("Peso inválido. Tente novamente")
+			kg = float(input("Peso do produto: "))
+
+		preco = float(input("Preço do produto: "))
+
+		produtos.append({"nome": nome_produto, "peso": kg, "estoque": 0, "preco": preco})
+		print(f"Produto '{nome_produto}' cadastrado com sucesso!")
+
+		novo_produto = input("Deseja cadastrar um novo produto? (s/n): ").lower()
+
+		if novo_produto != "s":
+			break
