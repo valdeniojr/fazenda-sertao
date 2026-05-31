@@ -1,4 +1,4 @@
-from dados import animais, produtos, metricas
+from dados import animais, produtos, metricas, usuarios
 from constantes import prefixos, tipos, animal_status
 
 from utils import menu_opcoes, gerar_id, titulo, exibir_animais, exibir_produtos
@@ -223,3 +223,39 @@ def grafico_producao():
 	for metrica in metricas:
 		valor = int(metrica["producao"] / 5)
 		print(f"{metrica["mes"]} ┤ {'█' * valor:<{int(maior_mes / 5) + 1}} {metrica["producao"]}L")	
+
+def cadastrar_usuario():
+	titulo("CADASTRAR USUÁRIO")
+
+	usuario = input("Digite o nome de usuário: ")
+
+	duplicado = True
+	
+	while duplicado:
+		duplicado = False
+		for user in usuarios:
+			if user["usuario"] == usuario:
+				print("Já existe um usuário com esse nome. Tente novamente.")
+				usuario = input("Digite o nome de usuário: ")
+				duplicado = True
+				break
+
+	while len(usuario) < 4:
+		print("Nome de usuário inválido. O usuário deve ter no mínimo 4 caracteres.")
+		usuario = input("Digite o nome de usuário: ")
+	
+	senha = input("Digite a senha: ")
+
+	while len(senha) < 4:
+		print("Senha inválida. A senha deve ter no mínimo 4 caracteres.")
+		senha = input("Digite a senha: ")
+	
+	permissao = input("Esse usuário terá permissão de administrador? (s/n): ").lower()
+
+	if permissao == "s":
+		permissao = True
+	else:
+		permissao = False
+
+	usuarios.append({"usuario": usuario, "senha": senha, "permissao": permissao})
+	print(f"Usuário '{usuario}' cadastrado com sucesso!")
