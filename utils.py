@@ -1,9 +1,22 @@
 from rich.console import Console
 from rich.panel import Panel
+from rich.table import Table
 from rich.text import Text
 from rich import box
 
 console = Console()
+
+
+def exibir_animal(animal):
+    tabela = Table(box=box.ROUNDED, border_style="dim", width=64)
+
+    tabela.add_column("Tipo", style="dim")
+    tabela.add_column("Identificação", style="dim")
+    tabela.add_column("Status", style="dim")
+
+    tabela.add_row(animal["tipo"], animal["identificacao"], animal["status"])
+
+    console.print(tabela)
 
 def titulo(texto):
     console.print("─" * 42, style="dim", justify="center", width=42)
