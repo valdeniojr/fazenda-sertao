@@ -1,7 +1,7 @@
 from dados import animais, produtos, metricas
 from constantes import prefixos, tipos, animal_status
 
-from utils import menu_opcoes, gerar_id, titulo, exibir_animais
+from utils import menu_opcoes, gerar_id, titulo, exibir_animais, exibir_produtos
 
 
 def cadastrar_animal ():
@@ -201,3 +201,12 @@ def adicionar_estoque():
 
 		if novo_estoque != "s":
 			break
+
+def listar_produtos():
+	if len(produtos) == 0:
+		print("Nenhum produto cadastrado.")
+	else:
+		titulo("LISTA DE PRODUTOS")
+		exibir_produtos(produtos)
+
+		print(f"Total de Produtos: {len(produtos)}")
