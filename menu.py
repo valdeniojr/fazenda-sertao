@@ -4,7 +4,7 @@ from rich.text import Text
 from rich import box
 
 from utils.utils import titulo, clearCMD
-from fazenda import cadastrar_animal, buscar_animal, atualizar_animal, remover_animal, listar_animais, producao_leite, cadastrar_produto, adicionar_estoque, listar_produtos, grafico_producao, cadastrar_usuario
+from fazenda.fazenda import cadastrar_animal, buscar_animal, atualizar_animal, remover_animal, listar_animais, producao_leite, cadastrar_produto, adicionar_estoque, listar_produtos, grafico_producao, cadastrar_usuario
 
 console = Console()
 
