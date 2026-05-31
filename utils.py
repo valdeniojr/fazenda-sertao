@@ -23,7 +23,7 @@ def titulo(texto):
     console.print(f"  [bold white]{texto}[/]", justify="center", width=42)
     console.print("─" * 42, style="dim", justify="center", width=42)
 
-def menu_opcoes(titulo, lista):
+def menu_opcoes(titulo, lista, posicao):
 	while True:
 		texto_menu = Text()
 		for i in range(len(lista)):
@@ -51,7 +51,10 @@ def menu_opcoes(titulo, lista):
 		else:
 			print("Opção inválida. Tente novamente.")
 
-	return lista[index - 1]
+	if posicao:
+		return index
+	else:
+		return lista[index - 1]
 
 def gerar_id(lista_tipos, lista, tipo):
 
