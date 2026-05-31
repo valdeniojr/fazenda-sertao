@@ -1,4 +1,4 @@
-from auth import login
+from auth.auth import login
 from menu import menu
 
 def main():
