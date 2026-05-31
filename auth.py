@@ -1,8 +1,10 @@
 from dados import usuarios
+from utils import titulo
 
 def login():
 	logado = False
 	while not logado:
+		titulo("FAZENDA SERTÃO")
 		usuario = input("Digite seu usuário: ")
 		senha = input("Digite sua senha: ")
 	
