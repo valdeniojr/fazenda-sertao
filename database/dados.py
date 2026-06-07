@@ -28,6 +28,11 @@ produtos = [
 	{'nome': 'Leite', 'peso': 1.0, 'estoque': 0, 'preco': 12.99},
 	{'nome': 'Manteiga', 'peso': 0.5, 'estoque': 0, 'preco': 16.99} 
 ]
+
+historico = [
+	{"data": "07/06/2026", "acao": "Entrada", "item": "Queijo", "quantidade": "10"}
+]
+
 lista_compras = []
 agendamentos = []
 lista_interesses = []
