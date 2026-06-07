@@ -1,4 +1,4 @@
-import os
+from datetime import datetime
 
 from rich.console import Console
 from rich.panel import Panel
@@ -71,28 +71,20 @@ def menu_opcoes(titulo, lista, posicao):
     else:
         return lista[index - 1]
 
-def gerar_id(lista_tipos, lista, tipo):
-
-    if not tipo in lista_tipos:
-        print("Não existe esse tipo de animal.")
-        return
-    
-    prefixo = lista_tipos[tipo]
-    i = 1
-
+def input_data(mensagem):
     while True:
-        confirm = f"{prefixo}-{i:04d}"
-        duplicado = False
+        try:
+            data = input(mensagem).strip()
+            datetime.strptime(data, "%d/%m/%Y")
+            return data
+        except ValueError:
+            print("Data inválida! Use o formato DD/MM/AAAA.")
 
-        for animal in lista:
-            if animal["identificacao"] == confirm:
-                duplicado = True
-                break
-
-        if not duplicado:
-            return confirm
-
-        i += 1
-
-def clearCMD():
-  os.system('cls' if os.name == 'nt' else 'clear')
+def input_hora(mensagem):
+    while True:
+        try:
+            hora = input(mensagem).strip()
+            datetime.strptime(hora, "%H:%M")
+            return hora
+        except ValueError:
+            print("Hora inválida! Use o formato HH:MM.")
