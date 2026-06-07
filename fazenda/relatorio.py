@@ -1,4 +1,5 @@
 from collections import Counter
+from datetime import datetime
 
 from rich.console import Console
 from rich.panel import Panel
@@ -6,7 +7,7 @@ from rich.table import Table
 from rich.text import Text
 from rich import box
 
-from database.dados import animais, metricas, produtos
+from database.dados import animais, metricas, produtos, historico
 from utils.utils import titulo, clearCMD
 
 console = Console()
@@ -83,3 +84,35 @@ def relatorio_geral():
 	estoque_queijo()
 	print("")
 
+def registrar_movimentacao(acao, item, quantidade):
+	data_atual = datetime.now().strftime("%d/%m/%Y")
+	historico.append({"data": data_atual, "acao": acao, "item": item, "quantidade": quantidade})
+
+def historico_movimentacoes():
+	clearCMD()
+	titulo("HISTÓRICO DE MOVIMENTAÇÃO")
+	print("")
+
+	if not historico:
+		print("Nenhuma movimentação registrada ainda.")
+		return
+	
+	tabela = Table(
+		box=box.ROUNDED,
+		border_style="dim",
+		header_style="bold dim",
+		show_header=True,
+		show_lines=True,
+		width=68,
+	)
+	
+	tabela.add_column("Data", style="dim", width=17, no_wrap=True)
+	tabela.add_column("Ação", width=20, no_wrap=True)
+	tabela.add_column("Item", style="bold white", width=18)
+	tabela.add_column("Qtd", style="white", width=6, justify="right")
+
+	for mov in historico:
+		tabela.add_row(mov["data"], mov["acao"], mov["item"], f"x{mov["quantidade"]}")
+
+	console.print(tabela)
+	console.print(f" [dim]Total de registros:[/] [bold white]{len(historico)}[/]\n")
