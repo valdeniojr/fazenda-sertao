@@ -39,16 +39,16 @@ def titulo(texto):
     console.print("─" * 42, style="dim", justify="center", width=42)
 
 def menu_opcoes(titulo, lista, posicao):
-	while True:
-		texto_menu = Text()
-		for i in range(len(lista)):
-			texto_menu.append(f"  {i + 1} - ", style="dim")
-			if i == (len(lista) - 1):
-				texto_menu.append(f"{lista[i]}", style="white")
-			else:
-				texto_menu.append(f"{lista[i]}\n", style="white")
+    while True:
+        texto_menu = Text()
+        for i in range(len(lista)):
+            texto_menu.append(f"  {i + 1} - ", style="dim")
+            if i == (len(lista) - 1):
+                texto_menu.append(f"{lista[i]}", style="white")
+            else:
+                texto_menu.append(f"{lista[i]}\n", style="white")
 
-		console.print(
+        console.print(
             Panel(
                 texto_menu,
                 title=f"[bold white] {titulo}\n [/]",
@@ -58,41 +58,41 @@ def menu_opcoes(titulo, lista, posicao):
                 padding=(0, 1),
             )
         )
-		
-		index = int(input(f"Escolha (1-{len(lista)}): "))
+        
+        index = int(input(f"Escolha (1-{len(lista)}): "))
 
-		if index > 0 and index <= len(lista):
-			break
-		else:
-			print("Opção inválida. Tente novamente.")
+        if index > 0 and index <= len(lista):
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
 
-	if posicao:
-		return index
-	else:
-		return lista[index - 1]
+    if posicao:
+        return index
+    else:
+        return lista[index - 1]
 
 def gerar_id(lista_tipos, lista, tipo):
 
-	if not tipo in lista_tipos:
-		print("Não existe esse tipo de animal.")
-		return
-	
-	prefixo = lista_tipos[tipo]
-	i = 1
+    if not tipo in lista_tipos:
+        print("Não existe esse tipo de animal.")
+        return
+    
+    prefixo = lista_tipos[tipo]
+    i = 1
 
-	while True:
-		confirm = f"{prefixo}-{i:04d}"
-		duplicado = False
+    while True:
+        confirm = f"{prefixo}-{i:04d}"
+        duplicado = False
 
-		for animal in lista:
-			if animal["identificacao"] == confirm:
-				duplicado = True
-				break
+        for animal in lista:
+            if animal["identificacao"] == confirm:
+                duplicado = True
+                break
 
-		if not duplicado:
-			return confirm
+        if not duplicado:
+            return confirm
 
-		i += 1
+        i += 1
 
 def clearCMD():
   os.system('cls' if os.name == 'nt' else 'clear')
