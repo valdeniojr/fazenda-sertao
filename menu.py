@@ -4,7 +4,10 @@ from rich.text import Text
 from rich import box
 
 from utils.utils import titulo, clearCMD
-from fazenda.fazenda import cadastrar_animal, buscar_animal, atualizar_animal, remover_animal, listar_animais, producao_leite, cadastrar_produto, adicionar_estoque, listar_produtos, grafico_producao, cadastrar_usuario
+from fazenda.animais import cadastrar_animal, buscar_animal, atualizar_animal, remover_animal, listar_animais
+from fazenda.producao import producao_leite, grafico_producao
+from fazenda.estoque import cadastrar_produto, adicionar_estoque, listar_produtos
+from fazenda.usuarios import cadastrar_usuario
 
 console = Console()
 
@@ -36,11 +39,15 @@ menu_admin.append("Adicionar Produto ao Estoque\n", style="white")
 menu_admin.append("  10 - ", style="dim")
 menu_admin.append("Ver Estoque Atual\n\n", style="white")
 
-menu_admin.append("  Sistema\n \n", style="dim")
+menu_admin.append("  Painel de Controle\n \n", style="dim")
 menu_admin.append("  11 - ", style="dim")
+menu_admin.append("Relatório Geral da Fazenda\n", style="white")
+
+menu_admin.append("  Sistema\n \n", style="dim")
+menu_admin.append("  12 - ", style="dim")
 menu_admin.append("Cadastrar Usuário\n", style="white")
 
-menu_admin.append("  12 - ", style="dim")
+menu_admin.append("  13 - ", style="dim")
 menu_admin.append("Sair\n", style="white")
 
 menu_cliente = Text()
@@ -102,8 +109,10 @@ def menu(permissao):
 			elif op == 10:
 				listar_produtos()
 			elif op == 11:
-				cadastrar_usuario()
+				relatorio_geral()
 			elif op == 12:
+				cadastrar_usuario()
+			elif op == 13:
 				clearCMD()
 				print("Até logo! Obrigado por usar o sistema Fazenda Sertão.")
 				break
