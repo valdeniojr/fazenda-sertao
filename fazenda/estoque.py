@@ -1,5 +1,6 @@
 from database.dados import produtos
 from utils.utils import menu_opcoes, titulo, exibir_produtos, clearCMD
+from fazenda.relatorio import registrar_movimentacao
 
 def cadastrar_produto():
 	clearCMD()
@@ -35,6 +36,7 @@ def cadastrar_produto():
 		preco = float(input("Preço do produto: "))
 
 		produtos.append({"nome": nome_produto, "peso": kg, "estoque": 0, "preco": preco})
+		registrar_movimentacao("Cadastro", nome_produto, 0)
 		clearCMD()
 		print(f"Produto '{nome_produto}' cadastrado com sucesso!")
 
@@ -61,6 +63,7 @@ def adicionar_estoque():
 			quantidade = int(input(f"Quantidade a adicionar em estoque para '{produtos[index - 1]['nome']}': "))
 
 		produtos[index - 1]["estoque"] += quantidade
+		registrar_movimentacao("Entrada", produtos[index - 1]['nome'], quantidade)
 		clearCMD()
 		print(f"Estoque de '{produtos[index - 1]['nome']}' atualizado com sucesso!")
 
