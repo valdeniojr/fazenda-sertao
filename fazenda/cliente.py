@@ -1,6 +1,9 @@
-from database.dados import animais, produtos, lista_compras, lista_interesses, historico
-from utils.utils import menu_opcoes, titulo, exibir_produtos, exibir_animais, clearCMD
+from database.dados import animais, produtos, lista_compras, lista_interesses, historico, agendamentos
+from utils.utils import menu_opcoes, titulo, exibir_produtos, exibir_animais, input_data, input_hora
+from utils.helpers import clearCMD
 from fazenda.relatorio import registrar_movimentacao
+
+from datetime import datetime
 
 def ver_estoque():
 	clearCMD()
@@ -58,7 +61,7 @@ def comprar_produto():
 				quantidade = int(input(f"Quantas unidades de '{produto['nome']}' deseja comprar? "))
 
 			produto["estoque"] -= quantidade
-			lista_compras.append({"produto": produto["nome"], "quantidade": quantidade, "total": produto["preco"] * quantidade})
+			lista_compras.append({"nome": produto["nome"], "quantidade": quantidade, "total": produto["preco"] * quantidade})
 			registrar_movimentacao("Compra", produto["nome"], quantidade)
 			clearCMD()
 			print(f"Compra de {quantidade}x '{produto['nome']}' realizada! Total: R$ {produto['preco'] * quantidade:.2f}")
@@ -100,3 +103,59 @@ def comprar_produto():
 		if nova_compra != "s":
 			break
 
+def comprar_animal():
+	clearCMD()
+	titulo("COMPRAR ANIMAL")
+
+	while True:
+		disponiveis = [a for a in animais if a["status"] == "Disponível p/ venda"]
+
+		if not disponiveis:
+			clearCMD()
+			print("Nenhum animal disponível para venda.")
+			return
+
+		lista_animais = [f"{a['tipo']} - ({a['identificacao']})" for a in disponiveis]
+		
+		clearCMD()
+		index = menu_opcoes("Escolha uma opção: ", lista_animais, True)
+		animal = disponiveis[index - 1]
+
+		print(f"Animal '{animal["identificacao"]}' adquirido com sucesso!")
+		registrar_movimentacao("Compra", animal["identificacao"], 1)
+		animais.remove(animal)
+		lista_compras.append({"nome": animal["identificacao"], "tipo": animal["tipo"], "quantidade": 1, "total": 0})
+
+		nova_compra = input("Deseja realizar outra compra? (s/n): ").lower()
+
+		if nova_compra != "s":
+			break
+
+def agendar_retirada():
+	clearCMD()
+	titulo("AGENDAR RETIRADA")
+
+	while True:
+		if len(lista_compras) == 0:
+			print("Nenhuma compra encontrada para agendar retirada.")
+			break
+
+		lista_produtos = [p["nome"] for p in lista_compras]
+			
+		clearCMD()
+		index = menu_opcoes("Escolha o produto", lista_produtos, True)
+
+		compra_selecionada = lista_compras[index - 1]
+
+		data = input_data("Informe uma data para retirada (dd/mm/aaaa): ")
+		hora = input_hora("Informe o horário para retirada (hh:mm): ")
+
+		clearCMD()
+		print("Retirada agendada com sucesso!")
+		agendamentos.append({"data": data, "hora": hora, "item": compra_selecionada["nome"]})
+		lista_compras.remove(compra_selecionada)
+
+		novo_agendamento = input("Deseja realizar outro agendamento? (s/n): ")
+
+		if novo_agendamento != "s":
+			break

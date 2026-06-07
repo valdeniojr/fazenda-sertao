@@ -1,5 +1,6 @@
 from database.dados import metricas
-from utils.utils import menu_opcoes, titulo, clearCMD
+from utils.utils import menu_opcoes, titulo
+from utils.helpers import clearCMD
 
 def producao_leite():
 	clearCMD()

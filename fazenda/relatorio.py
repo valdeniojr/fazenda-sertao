@@ -8,7 +8,8 @@ from rich.text import Text
 from rich import box
 
 from database.dados import animais, metricas, produtos, historico
-from utils.utils import titulo, clearCMD
+from utils.utils import titulo
+from utils.helpers import clearCMD
 
 console = Console()
 

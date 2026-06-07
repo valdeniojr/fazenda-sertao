@@ -1,7 +1,7 @@
 from database.dados import animais
 from config.constantes import prefixos, tipos, animal_status
-from utils.utils import menu_opcoes, gerar_id, titulo, exibir_animais, clearCMD
-
+from utils.utils import menu_opcoes, gerar_id, titulo, exibir_animais
+from utils.helpers import clearCMD
 
 def cadastrar_animal():
 	clearCMD()

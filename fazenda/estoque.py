@@ -1,5 +1,6 @@
 from database.dados import produtos
-from utils.utils import menu_opcoes, titulo, exibir_produtos, clearCMD
+from utils.utils import menu_opcoes, titulo, exibir_produtos
+from utils.helpers import clearCMD
 from fazenda.relatorio import registrar_movimentacao
 
 def cadastrar_produto():
