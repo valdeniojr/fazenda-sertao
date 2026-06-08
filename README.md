@@ -1,6 +1,6 @@
 # 🐄 Fazenda Sertão — Sistema de Gestão Rural
 
-> Projeto desenvolvido para a disciplina de **Algoritmos e Lógica de Programação**
+> Projeto desenvolvido para a disciplina de **Algoritmos e Lógica de Programação** — versão refatorada com arquitetura modular.
 
 ---
 
@@ -8,22 +8,44 @@
 
 O **Fazenda Sertão** é um sistema de gestão rural desenvolvido em Python como projeto avaliativo da cadeira de **Algoritmos e Lógica de Programação**. O sistema simula o gerenciamento de uma fazenda, permitindo o controle de animais, produção de leite, estoque de produtos e atendimento a clientes.
 
-O projeto foi desenvolvido respeitando as **restrições impostas pelo professor**, utilizando exclusivamente os conteúdos abordados em sala de aula, sem o uso de bibliotecas externas, funções avançadas ou recursos além do escopo da disciplina.
+Esta versão é uma **refatoração completa** da versão original. O código foi reorganizado em uma arquitetura modular, com separação de responsabilidades em pacotes dedicados, adoção de dicionários no lugar de listas aninhadas e integração com bibliotecas externas para enriquecer a experiência no terminal e gerar documentos reais.
 
 ---
 
-## 🎯 Objetivo Acadêmico
+## 🗂️ Estrutura do Projeto
 
-Aplicar na prática os conceitos fundamentais de lógica de programação aprendidos em sala, demonstrando domínio sobre:
+```
+fazenda-sertao/
+│
+├── main.py                  # Ponto de entrada da aplicação
+├── menu.py                  # Lógica e renderização dos menus
+│
+├── auth/
+│   └── auth.py              # Autenticação e controle de login
+│
+├── config/
+│   └── constantes.py        # Constantes globais (tipos, status, prefixos)
+│
+├── database/
+│   └── dados.py             # Estruturas de dados em memória (estado global)
+│
+├── fazenda/
+│   ├── animais.py           # CRUD de animais
+│   ├── producao.py          # Registro e visualização de produção de leite
+│   ├── estoque.py           # Gestão de produtos e estoque
+│   ├── relatorio.py         # Relatório geral e histórico de movimentações
+│   ├── usuarios.py          # Cadastro de usuários
+│   └── cliente.py           # Funcionalidades do perfil cliente
+│
+├── utils/
+│   ├── utils.py             # Componentes de UI: tabelas, menus, títulos
+│   └── helpers.py           # Utilitários: limpar tela, gerar ID, CEP, nota fiscal
+│
+└── notas/
+    └── nota_fiscal.pdf      # Nota fiscal gerada ao agendar retirada
+```
 
-- Declaração e uso de **variáveis**
-- **Formatação** de saída com f-strings
-- **Operadores lógicos** (`and`, `or`, `not`)
-- **Operadores aritméticos** (`+`, `-`, `*`, `/`)
-- Estruturas de repetição: **`for`** e **`while`**
-- **Listas simples** e listas aninhadas (listas de listas)
-- Estruturas condicionais **`if`, `elif`, `else`**
-- Entrada de dados com **`input()`**
+> Na versão original, todo o código estava concentrado em um único arquivo `main.py`. A refatoração separou as responsabilidades em módulos e pacotes independentes.
 
 ---
 
@@ -32,45 +54,50 @@ Aplicar na prática os conceitos fundamentais de lógica de programação aprend
 O sistema possui dois perfis de acesso: **Administrador** e **Cliente**.
 
 ### 🔐 Autenticação
+
 - Login com usuário e senha
-- Verificação de credenciais via lista de usuários
+- Verificação de credenciais via lista de usuários em memória
 - Redirecionamento automático para o menu correspondente ao perfil
 
 ---
 
 ### 🛠️ Menu do Administrador
 
-| Opção | Funcionalidade |
-|-------|---------------|
-| 1 | Cadastrar Animal |
-| 2 | Buscar Animal |
-| 3 | Atualizar Animal |
-| 4 | Remover Animal |
-| 5 | Listar Animais |
-| 6 | Registrar Produção de Leite |
-| 7 | Criar Produto |
-| 8 | Adicionar Produto ao Estoque |
-| 9 | Ver Estoque Atual |
-| 10 | Gráfico de Produção de Leite |
-| 11 | Cadastrar Usuário |
-| 12 | Sair |
+| Opção | Categoria | Funcionalidade |
+|-------|-----------|----------------|
+| 1 | Animais | Cadastrar Animal |
+| 2 | Animais | Buscar Animal |
+| 3 | Animais | Atualizar Animal |
+| 4 | Animais | Remover Animal |
+| 5 | Animais | Listar Animais |
+| 6 | Produção | Registrar Produção de Leite |
+| 7 | Produção | Gráfico de Produção de Leite |
+| 8 | Estoque | Cadastrar Produto |
+| 9 | Estoque | Adicionar Produto ao Estoque |
+| 10 | Estoque | Ver Estoque Atual |
+| 11 | Painel | Relatório Geral da Fazenda |
+| 12 | Painel | Histórico de Movimentação |
+| 13 | Sistema | Cadastrar Usuário |
+| 14 | Sistema | Sair |
 
 **Detalhes das funcionalidades:**
 
-- **Cadastro de Animais:** suporta Bovino de Leite, Caprino, Ovino e Suíno, com status de Em Lactação, Para Engorda ou Disponível para Venda. Valida identificação duplicada.
-- **Busca e Atualização:** permite localizar e editar tipo, identificação ou status de qualquer animal cadastrado.
-- **Remoção:** exibe detalhes do animal e solicita confirmação antes de excluir.
-- **Produção de Leite:** acumula litros produzidos por mês ao longo do ano.
-- **Gráfico de Produção:** exibe um gráfico de barras horizontal no terminal usando caracteres `▇`, com escala proporcional ao maior valor registrado.
-- **Gestão de Produtos:** criação de produtos com nome, peso (kg) e preço, com controle de estoque.
-- **Cadastro de Usuário:** permite criar novos usuários com ou sem permissão de administrador (mínimo de 4 caracteres para usuário e senha).
+- **Cadastro de Animais:** suporta Bovino de Leite, Caprino, Ovino e Suíno. O ID é gerado automaticamente com prefixo por tipo (ex: `BOV-0001`, `CAP-0002`), eliminando duplicatas sem intervenção manual.
+- **Busca e Atualização:** localiza animais por identificação e permite editar tipo, identificação ou status individualmente.
+- **Remoção:** exibe os dados do animal e solicita confirmação antes de excluir.
+- **Produção de Leite:** acumula litros produzidos por mês ao longo do ano, validando valores negativos.
+- **Gráfico de Produção:** exibe um gráfico de barras horizontal no terminal com escala proporcional ao mês de maior produção.
+- **Gestão de Produtos:** criação de produtos com nome, peso (kg) e preço, com validação de nome duplicado e estoque inicial zerado. Toda entrada de estoque é registrada no histórico.
+- **Relatório Geral *(novo)*:** painel consolidado com rebanho por tipo (usando `Counter`), total acumulado de produção de leite com destaque do mês pico, e resumo do estoque de queijo com peso total.
+- **Histórico de Movimentação *(novo)*:** tabela com data, ação (Cadastro, Entrada, Compra), item e quantidade de cada operação realizada no sistema.
+- **Cadastro de Usuário:** cria novos usuários com validação de nome único, mínimo de 4 caracteres para usuário e senha, e definição de permissão de administrador.
 
 ---
 
 ### 🛒 Menu do Cliente
 
 | Opção | Funcionalidade |
-|-------|---------------|
+|-------|----------------|
 | 1 | Ver Estoque Disponível |
 | 2 | Comprar Produto |
 | 3 | Comprar Animal |
@@ -81,58 +108,93 @@ O sistema possui dois perfis de acesso: **Administrador** e **Cliente**.
 
 **Detalhes das funcionalidades:**
 
-- **Estoque Disponível:** visualiza animais ou produtos cadastrados.
-- **Comprar Produto:** valida estoque antes de confirmar a compra e debita a quantidade.
-- **Comprar Animal:** lista somente animais com status "Disponível p/ venda" e remove o animal do sistema após a compra.
-- **Agendar Retirada:** permite agendar data e horário para retirada de itens já comprados.
-- **Lista de Interesses:** o cliente pode marcar produtos de interesse para acompanhamento futuro, sem duplicatas.
+- **Estoque Disponível:** o cliente pode escolher entre visualizar o estoque de animais ou o de produtos.
+- **Comprar Produto:** o cliente pode comprar a partir da lista geral ou diretamente da sua lista de interesses. Valida estoque disponível antes de confirmar, debita a quantidade e registra a movimentação.
+- **Comprar Animal:** lista somente animais com status "Disponível p/ venda". Após a compra, o animal é removido do sistema e adicionado à lista de compras.
+- **Agendar Retirada *(expandido)*:** permite agendar data e horário de entrega, informar o nome/razão social do cliente e buscar o endereço completo via **API ViaCEP** pelo CEP. Ao confirmar, uma **nota fiscal em PDF** é gerada automaticamente na pasta `notas/`.
+- **Registrar Interesse:** o cliente marca produtos de interesse para acompanhamento futuro, sem duplicatas.
+- **Ver Meus Interesses:** exibe todos os produtos que o cliente sinalizou interesse, com informações de peso, estoque e preço.
 
 ---
 
-## 🗂️ Estrutura de Dados
+## 🆕 O Que Mudou na Refatoração
 
-Todas as informações são armazenadas em **listas aninhadas** (listas de listas), conforme o conteúdo da disciplina:
+| Aspecto | Versão Original | Versão Refatorada |
+|---------|-----------------|-------------------|
+| Organização | Arquivo único (`main.py`) | Módulos em pacotes separados |
+| Estrutura de dados | Listas aninhadas `[[...]]` | Dicionários `{...}` |
+| Interface no terminal | `print()` simples | `rich` (tabelas, painéis, cores) |
+| IDs dos animais | Inserção manual pelo usuário | Geração automática com prefixo |
+| Endereço de entrega | Digitação livre | Consulta automática por CEP (ViaCEP) |
+| Nota fiscal | Não existia | PDF gerado via `fpdf2` |
+| Relatório | Não existia | Painel consolidado com `rich` |
+| Histórico | Não existia | Log de todas as movimentações |
+| Dependências | Nenhuma (stdlib puro) | `rich`, `requests`, `fpdf2` |
+| Menu Admin | 12 opções | 14 opções |
+
+---
+
+## 🗃️ Estrutura de Dados
+
+Os dados são armazenados em memória como **listas de dicionários**, evoluindo das listas aninhadas da versão original:
 
 ```python
-# Usuários: [nome_de_usuário, senha, é_admin]
+# Usuários
 usuarios = [
-    ["johndoe", "12345", True],
-    ["janedoe", "12345", False]
+    {"usuario": "johndoe", "senha": "12345", "permissao": True},
+    {"usuario": "janedoe", "senha": "12345", "permissao": False}
 ]
 
-# Animais: [tipo, identificação, status]
-animais = []
+# Animais: ID gerado automaticamente (ex: BOV-0001)
+animais = [
+    {"tipo": "Bovino de Leite", "identificacao": "BOV-0001", "status": "Em lactação"}
+]
 
-# Métricas mensais: [mês, litros_acumulados]
+# Métricas mensais de produção de leite
 metricas = [
-    ["Jan", 0], ["Fev", 0], ["Mar", 0], ...
+    {"mes": "Jan", "producao": 0.0},
+    {"mes": "Fev", "producao": 0.0},
+    # ... até Dezembro
 ]
 
-# Produtos: [nome, kg, quantidade_em_estoque, preço]
-produtos = []
+# Produtos
+produtos = [
+    {"nome": "Queijo Minas", "peso": 0.5, "estoque": 10, "preco": 25.90}
+]
 
-# Listas auxiliares
-lista_compras = []
-agendamentos = []       # [data, hora, produto]
-lista_interesses = []
+# Histórico de movimentações
+historico = [
+    {"data": "08/06/2026", "acao": "Entrada", "item": "Queijo Minas", "quantidade": 10}
+]
+
+# Auxiliares
+lista_compras = []   # Compras realizadas na sessão
+agendamentos = []    # Retiradas agendadas
+lista_interesses = []  # Interesses do cliente
 ```
 
 ---
 
 ## ▶️ Como Executar
 
-**Pré-requisito:** Python 3.10 ou superior instalado na máquina.
+**Pré-requisito:** Python 3.12 ou superior.
 
-> A versão 3.10+ é necessária para o uso correto de f-strings com alinhamento de texto (`:<15`, `:<10`) utilizadas na formatação das tabelas do sistema.
-
-**Passo a passo:**
+**1. Clone ou baixe o projeto:**
 
 ```bash
-# 1. Clone ou baixe o arquivo do projeto
-# 2. No terminal, navegue até a pasta onde o arquivo está salvo
-cd caminho/para/o/projeto
+git clone https://github.com/seu-usuario/fazenda-sertao.git
+cd fazenda-sertao
+```
 
-# 3. Execute o programa
+**2. Instale as dependências:**
+
+```bash
+pip install rich requests fpdf2
+```
+
+**3. Execute o programa:**
+
+```bash
 python main.py
 ```
 
@@ -145,62 +207,49 @@ python main.py
 | `johndoe` | `12345` | Administrador |
 | `janedoe` | `12345` | Cliente |
 
-> Novos usuários podem ser criados pelo administrador através da opção **11 — Cadastrar Usuário** no menu.
+> Novos usuários podem ser criados pelo administrador através da opção **13 — Cadastrar Usuário** no menu.
 
 ---
 
-## 💡 Tipos de Animais Suportados
+## 💡 Referência Rápida
 
-| Código | Tipo |
-|--------|------|
-| 1 | Bovino de Leite |
-| 2 | Caprino |
-| 3 | Ovino |
-| 4 | Suíno |
+### Tipos de Animais
 
-## 📊 Status dos Animais
+| Prefixo | Tipo |
+|---------|------|
+| `BOV` | Bovino de Leite |
+| `CAP` | Caprino |
+| `OVI` | Ovino |
+| `SUI` | Suíno |
 
-| Código | Status |
-|--------|--------|
-| 1 | Em lactação |
-| 2 | Para engorda |
-| 3 | Disponível p/ venda |
+### Status dos Animais
 
----
-
-## 📁 Estrutura do Projeto
-
-```
-fazenda-sertao/
-│
-└── main.py   # Arquivo principal com todo o código do sistema
-```
-
-> Por se tratar de um projeto acadêmico com restrições de escopo, todo o código está concentrado em um único arquivo `.py`, sem separação em módulos ou funções.
+| Status | Descrição |
+|--------|-----------|
+| Em lactação | Animal em produção de leite |
+| Para engorda | Animal destinado ao abate |
+| Disponível p/ venda | Animal visível e comprável pelo cliente |
 
 ---
 
-## 🧠 Conceitos Aplicados
+## 📦 Dependências
 
-| Conceito | Onde é utilizado |
-|----------|-----------------|
-| `while` loop | Loop principal do menu, loop de login, validações de entrada |
-| `for` loop | Iteração sobre listas de animais, produtos e métricas |
-| `for/else` | Verificação de existência de itens nas listas |
-| Operadores lógicos | Verificação de login (`and`), controle de fluxo (`not`, `or`) |
-| Operadores aritméticos | Cálculo de estoque, acúmulo de produção de leite, escala do gráfico |
-| Listas aninhadas | Estrutura principal de dados (usuários, animais, produtos) |
-| F-strings | Formatação de tabelas e mensagens de saída |
-| `input()` | Captura de todas as interações do usuário |
-| Variáveis booleanas | Controle de sessão (`logado`, `admin`, `duplicado`) |
+| Biblioteca | Uso |
+|------------|-----|
+| `rich` | Tabelas, painéis e formatação no terminal |
+| `requests` | Consulta de CEP via API ViaCEP |
+| `fpdf2` | Geração de nota fiscal em PDF |
+| `collections.Counter` | Contagem de animais por tipo no relatório |
+| `datetime` | Validação de datas/horas e registro no histórico |
 
 ---
 
 ## 📌 Observações
 
-- Os dados **não são persistidos** entre execuções. Ao encerrar o programa, todas as informações são perdidas, pois o armazenamento em arquivo não foi abordado na disciplina.
-- As validações de entrada (valores negativos, opções inválidas, campos vazios) foram implementadas com loops `while`, seguindo a lógica apresentada em sala.
-- O gráfico de produção de leite (opção 10) é exibido diretamente no terminal e usa escala proporcional ao mês com maior produção registrada.
+- Os dados **não são persistidos** entre execuções. Ao encerrar o programa, todas as informações são perdidas.
+- A nota fiscal gerada é salva em `notas/nota_fiscal.pdf` e **sobrescrita** a cada novo agendamento. A pasta `notas/` está listada no `.gitignore`.
+- A consulta de CEP requer conexão com a internet (API pública [ViaCEP](https://viacep.com.br)). Em caso de falha, o sistema informa o erro e solicita novo CEP.
+- Validações de entrada (valores negativos, campos vazios, opções fora do intervalo, datas e horas malformadas) são tratadas com loops `while` em todas as funções.
 
 ---
 
