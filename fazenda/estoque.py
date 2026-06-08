@@ -15,17 +15,14 @@ def cadastrar_produto():
 			print("Nome inválido. Tente novamente")
 			nome_produto = input("Nome do produto: ")
 
-		nome_duplicado = True
+		nome_duplicado = [p for p in produtos if p["nome"].lower() == nome_produto.lower()]
 
 		while nome_duplicado:
-			nome_duplicado = False
-			for produto in produtos:
-				if produto["nome"] == nome_produto:
-					clearCMD()
-					print("Já existe um produto com esse nome. Tente novamente.")
-					nome_produto = input("Nome do produto: ")
-					nome_duplicado = True
-					break
+			clearCMD()
+			print("Já existe um produto com esse nome. Tente novamente.")
+			nome_produto = input("Nome do produto: ")
+			
+			nome_duplicado = [p for p in produtos if p["nome"].lower() == nome_produto.lower()]
 
 		kg = float(input("Peso do produto: "))
 
