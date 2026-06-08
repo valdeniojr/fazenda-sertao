@@ -1,5 +1,6 @@
 from database.dados import usuarios
-from utils.utils import titulo, clearCMD
+from utils.utils import titulo
+from utils.helpers import clearCMD
 
 def login():
 	clearCMD()
