@@ -1,6 +1,6 @@
 from database.dados import animais, produtos, lista_compras, lista_interesses, historico, agendamentos
-from utils.utils import menu_opcoes, titulo, exibir_produtos, exibir_animais, input_data, input_hora
-from utils.helpers import clearCMD
+from utils.utils import menu_opcoes, titulo, exibir_informacoes_endereco, exibir_produtos, exibir_animais, input_data, input_hora
+from utils.helpers import clearCMD, buscar_endereco_por_cep, gerar_nota_fiscal
 from fazenda.relatorio import registrar_movimentacao
 
 from datetime import datetime
@@ -147,15 +147,37 @@ def agendar_retirada():
 
 		compra_selecionada = lista_compras[index - 1]
 
-		data = input_data("Informe uma data para retirada (dd/mm/aaaa): ")
-		hora = input_hora("Informe o horário para retirada (hh:mm): ")
+		cliente = input("Informe a razão social ou nome do cliente: ")
+
+		data = input_data("Informe uma data para entrega (dd/mm/aaaa): ")
+		hora = input_hora("Informe o horário para entrega (hh:mm): ")
+
+		while True:
+			cep = input("Informe o CEP para entrega (00000-000): ")
+
+			data = buscar_endereco_por_cep(cep)
+
+			clearCMD()
+
+			if not data:
+				print("CEP inválido ou API indisponível.")
+				continue
+
+			exibir_informacoes_endereco(data)
+
+			confirmacao = input(f"Deseja realizar a entrega em {data.get('logradouro')}? (s/n): ").lower()
+
+			if confirmacao == "s":
+				break
 
 		clearCMD()
 		print("Retirada agendada com sucesso!")
 		agendamentos.append({"data": data, "hora": hora, "item": compra_selecionada["nome"]})
 		lista_compras.remove(compra_selecionada)
 
-		novo_agendamento = input("Deseja realizar outro agendamento? (s/n): ")
+		gerar_nota_fiscal(cliente, data, compra_selecionada["nome"], compra_selecionada["quantidade"],compra_selecionada["total"])
+
+		novo_agendamento = input("Deseja realizar outro agendamento? (s/n): ").lower()
 
 		if novo_agendamento != "s":
 			break
