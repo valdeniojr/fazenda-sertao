@@ -3,12 +3,14 @@ from rich.panel import Panel
 from rich.text import Text
 from rich import box
 
-from utils.utils import titulo, clearCMD
+from utils.utils import titulo
+from utils.helpers import clearCMD
 from fazenda.animais import cadastrar_animal, buscar_animal, atualizar_animal, remover_animal, listar_animais
 from fazenda.producao import producao_leite, grafico_producao
 from fazenda.estoque import cadastrar_produto, adicionar_estoque, listar_produtos
 from fazenda.usuarios import cadastrar_usuario
 from fazenda.relatorio import relatorio_geral, historico_movimentacoes
+from fazenda.cliente import ver_estoque, comprar_produto, comprar_animal, agendar_retirada, registrar_interesse, ver_interesses
 
 console = Console()
 
@@ -141,3 +143,24 @@ def menu(permissao):
 			print("")
 
 			op = int(input("Escolha uma opção: "))
+
+			if op == 1:
+				ver_estoque()
+			elif op == 2:
+				comprar_produto()
+			elif op == 3:
+				comprar_animal()
+			elif op == 4:
+				agendar_retirada()
+			elif op == 5:
+				registrar_interesse()
+			elif op == 6:
+				ver_interesses()
+			elif op == 7:
+				clearCMD()
+				print("Até logo! Obrigado por usar o sistema Fazenda Sertão.")
+				break
+			else:
+				clearCMD()
+				print("Opção inválida. Tente novamente.")
+				continue
