@@ -3,8 +3,6 @@ from utils.utils import menu_opcoes, titulo, exibir_informacoes_endereco, exibir
 from utils.helpers import clearCMD, buscar_endereco_por_cep, gerar_nota_fiscal
 from fazenda.relatorio import registrar_movimentacao
 
-from datetime import datetime
-
 def ver_estoque():
 	clearCMD()
 	titulo("ESTOQUE DISPONÍVEL")
