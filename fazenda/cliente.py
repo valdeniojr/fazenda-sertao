@@ -181,3 +181,31 @@ def agendar_retirada():
 
 		if novo_agendamento != "s":
 			break
+
+def registrar_interesse():
+	clearCMD()
+	titulo("REGISTRAR INTERESSE")
+
+	while True:
+		if not produtos:
+			clearCMD()
+			print("Nenhum produto disponível para compra.")
+			return
+
+		lista_nomes = [f"{p['nome']}" for p in produtos]
+			
+		clearCMD()
+		index = menu_opcoes("Escolha o produto", lista_nomes, True)
+		produto = produtos[index - 1]
+
+		clearCMD()
+		if produto in lista_interesses:
+			print("Você já adicionou esse produto aos seus interesses.")
+		else:
+			lista_interesses.append(produto)
+			print("Produto adicionado aos seus interesses com sucesso!")
+
+		novo_interesse = input("Deseja adicionar outro produto aos seus interesses? (s/n): ")
+
+		if novo_interesse != "s":
+			break
