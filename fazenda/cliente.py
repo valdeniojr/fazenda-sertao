@@ -209,3 +209,15 @@ def registrar_interesse():
 
 		if novo_interesse != "s":
 			break
+
+def ver_interesses():
+	clearCMD()
+	titulo("MEUS INTERESSES")
+
+	if not lista_interesses:
+		print("Você ainda não demonstrou interesse em nenhum produto.")
+		return
+	
+	lista_produtos = [p for p in produtos if p in lista_interesses]
+
+	exibir_produtos(lista_produtos)
