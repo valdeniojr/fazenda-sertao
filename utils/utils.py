@@ -8,6 +8,34 @@ from rich import box
 
 console = Console()
 
+def exibir_informacoes_endereco(endereco):
+    tabela = Table(
+        box=box.SIMPLE,
+        show_header=False,
+        header_style="dim",
+        show_edge=False
+    )
+
+    tabela.add_column("", style="dim")
+    tabela.add_column("", style="bold white")
+
+    tabela.add_row("CEP", endereco.get("cep"))
+    tabela.add_row("Logradouro", endereco.get("logradouro"))
+    tabela.add_row("Bairro", endereco.get("bairro"))
+    tabela.add_row("Cidade", endereco.get("localidade"))
+    tabela.add_row("UF", endereco.get("uf"))
+
+    console.print(
+        Panel(
+            tabela,
+            title=f"[bold white] INFORMAÇÕES DO ENDEREÇO [/]",
+            border_style="dim",
+            box=box.ROUNDED,
+            width=42,
+            padding=(0, 1),
+        )
+    )
+
 def exibir_animais(animais):
     tabela = Table(box=box.ROUNDED, border_style="dim", width=64)
 
